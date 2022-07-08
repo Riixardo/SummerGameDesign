@@ -11,10 +11,14 @@ public class CustomObjectMovement : MonoBehaviour
         the player enters and presses a key (key is customizable)
 
         Script can be used for infinite movement, however, if toggled all children must have it toggled on or else there will be asynchronous motion
+
+        To be honest, though powerful, it may be a hassle for other to incorporate and may just end up making others confused.
+        So, I say do not make this a core script, I will just use this in my own dev team
     */
 
     public bool IsControlMaster = true;
     public bool IsMoving = true;
+    public bool OnlyTriggerOnce = false;
     public TMP_Text floatingText;
     public bool ProximityBased = false;
     public string InputKey;
@@ -24,7 +28,9 @@ public class CustomObjectMovement : MonoBehaviour
     public float MovementTime = 2.0f;
     public bool RotateBackwards = false;
     public bool ObjectMovementReset = false;
-    public float RotateValue, LeftValue, RightValue, UpValue, DownValue;
+    public float RotateXValue, RotateYValue, RotateZValue, LeftValue, RightValue, UpValue, DownValue;
+    public CustomObjectMovement triggerObjectMethodNameTRIGGERONCE;
+    public CustomObjectMovement triggerObject2MethodNameTRIGGERONCE;
 
     bool inRangeToMove = false;
     bool animationPlaying = false;
@@ -191,6 +197,10 @@ public class CustomObjectMovement : MonoBehaviour
             floatingText.enabled = false;
         }
     }
+    public void TriggerOnce()
+    {
+        StartCoroutine(PlayMoveTranslation(false));
+    }
     IEnumerator PlayMoveTranslation(bool resetAfter)
     {
         animationPlaying = true;
@@ -200,8 +210,12 @@ public class CustomObjectMovement : MonoBehaviour
         float slidingRightDelay = RightValue / timeLimit;
         float slidingUpDelay = UpValue / timeLimit;
         float slidingDownDelay = DownValue / timeLimit;
-        float rotateDelay = RotateBackwards ? -1f : 1f;
-        rotateDelay = rotateDelay * RotateValue / timeLimit;
+        float rotateXDelay = RotateBackwards ? -1f : 1f;
+        float rotateYDelay = RotateBackwards ? -1f : 1f;
+        float rotateZDelay = RotateBackwards ? -1f : 1f;
+        rotateXDelay = rotateXDelay * RotateXValue / timeLimit;
+        rotateYDelay = rotateYDelay * RotateYValue / timeLimit;
+        rotateZDelay = rotateZDelay * RotateZValue / timeLimit;
         float backTrack = 1f;
         if(ObjectMovementReset && !resetAfter)
         {
@@ -210,7 +224,7 @@ public class CustomObjectMovement : MonoBehaviour
         while (timer < timeLimit || moveForever)
         {
             timer++;
-            this.transform.Rotate(new Vector3(0, rotateDelay * backTrack, 0), Space.World);
+            this.transform.Rotate(new Vector3(rotateXDelay * backTrack, rotateYDelay * backTrack, rotateZDelay * backTrack), Space.World);
             this.transform.Translate(new Vector3((-slidingLeftDelay) * backTrack, 0, 0), Space.World);
             this.transform.Translate(new Vector3(slidingRightDelay * backTrack, 0, 0), Space.World);
             this.transform.Translate(new Vector3(0, slidingUpDelay * backTrack, 0), Space.World);
@@ -218,12 +232,24 @@ public class CustomObjectMovement : MonoBehaviour
             if (timer >= timeLimit && !MoveForever)
             {
                 animationPlaying = false;
+                if(triggerObjectMethodNameTRIGGERONCE != null)
+                {
+                    triggerObjectMethodNameTRIGGERONCE.TriggerOnce();
+                }
+                if(triggerObject2MethodNameTRIGGERONCE != null)
+                {
+                    triggerObject2MethodNameTRIGGERONCE.TriggerOnce();
+                }
                 if (inRangeToMove)
                 {
                     if (floatingText != null)
                     {
                         floatingText.enabled = false;
                     }
+                }
+                if(OnlyTriggerOnce)
+                {
+                    this.enabled = false;
                 }
             }
             if(timer > 2f && moveForever && IsControlMaster && isKeyDown)
@@ -235,6 +261,10 @@ public class CustomObjectMovement : MonoBehaviour
             }
             if(!moveForever && MoveForever)
             {
+                if(OnlyTriggerOnce)
+                {
+                    this.enabled = false;
+                }
                 break;
             }
             yield return new WaitForSeconds(MovementIncrement);
