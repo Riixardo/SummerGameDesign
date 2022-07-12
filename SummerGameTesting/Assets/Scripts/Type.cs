@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface Testing 
+public enum Type
 {
-    void Update();
-}
+    DAMAGE, HEALING, MAGIC, MELEE, BUFF, MINION
+};

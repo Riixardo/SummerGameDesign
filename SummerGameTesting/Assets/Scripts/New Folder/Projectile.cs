@@ -10,7 +10,7 @@ using UnityEngine;
 
         public Vector3 initialVelocity = new Vector3(0f, 22f, 0f);
 
-        public Projectile(string n, int dmg) : base(n, dmg) 
+        public Projectile(string n, Type type, int dmg) : base(n, type, dmg) 
         {
         }
         protected void OnCollisionEnter(Collision collision)

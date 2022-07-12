@@ -6,7 +6,7 @@ public class Damage : Combat
 {
     protected int damage;
 
-    public Damage(string n, int dmg) : base(n) 
+    public Damage(string n, Type type, int dmg) : base(n, type) 
     {
         damage = dmg;
     }

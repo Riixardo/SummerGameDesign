@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Fireball : Projectile
 {
-    public Fireball() : base("Fireball", 4) {
+
+    public Fireball() : base("Fireball", Type.DAMAGE, 3) {
 
     }
     void Start()

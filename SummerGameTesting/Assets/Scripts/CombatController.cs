@@ -10,7 +10,9 @@ public class CombatController : MonoBehaviour
     void Start()
     {
         state = obj.AddComponent<Fireball>();
-        //Debug.Log(state.GetDamage());
+        if(state.type == Type.DAMAGE) {
+            Debug.Log(((Damage)(state)).GetDamage());
+        }
         Debug.Log(state);
     }
     void Update()
