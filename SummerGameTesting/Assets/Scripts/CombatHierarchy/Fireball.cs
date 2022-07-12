@@ -5,17 +5,17 @@ using UnityEngine;
 public class Fireball : Projectile
 {
 
-    public Fireball() : base("Fireball", Type.DAMAGE, 3) {
 
+    public Fireball() : base("Fireball", Type.DAMAGE, 3) {
     }
     void Start()
     {
-        r = this.GetComponent<Rigidbody>();
-        o = this.gameObject;
-        r.velocity = initialVelocity;
-        Destroy(o, 33f);
+        rigid = this.GetComponent<Rigidbody>();
+        obj = this.gameObject;
+        initialVelocity = new Vector3(this.transform.forward);
+        rigid.velocity = initialVelocity;
+        Destroy(obj, 10f);
         Debug.Log("WD");
-        Update();
     }
     void Update()
     {

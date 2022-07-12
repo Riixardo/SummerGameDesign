@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class CombatController : MonoBehaviour
 {
-    public Rigidbody r;
-    public GameObject obj;
+    public GameObject[] objs;
     Combat state;
     void Start()
     {
-        state = obj.AddComponent<Fireball>();
+        //state = obj.AddComponent<Fireball>();
         if(state.type == Type.DAMAGE) {
             Debug.Log(((Damage)(state)).GetDamage());
         }
@@ -17,6 +16,9 @@ public class CombatController : MonoBehaviour
     }
     void Update()
     {
-        
+        if(Input.GetKeyDown("f"))
+        {
+            Instantiate
+        }
     }
 }
