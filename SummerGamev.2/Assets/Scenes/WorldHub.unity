@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44731683, g: 0.4972499, b: 0.57522124, a: 1}
+  m_IndirectSpecularColor: {r: 0.44731683, g: 0.49725002, b: 0.5752219, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4047,7 +4047,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh53944
+  m_Name: pb_Mesh40986
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4434,6 +4434,10 @@ MonoBehaviour:
   - {fileID: 1901128073747970415, guid: 79f428bb8165f4d9d9fc8c8671522da9, type: 3}
   - {fileID: 3975308945103039933, guid: 263f4f23bb7774952a722297195a3637, type: 3}
   - {fileID: 5397320313316500578, guid: e5408e7c5e97d461dbe680da298d56b0, type: 3}
+  - {fileID: 8399313877844880706, guid: e394cf018e62a65448e2e14eb4177990, type: 3}
+  - {fileID: 4704628332468601248, guid: ae05914d5ea8f2c4fbce4783451f48e5, type: 3}
+  weapons:
+  - {fileID: 8048397661862199884, guid: 8a96a952fd1e7e04ebca2b6ea1a42ccb, type: 3}
 --- !u!1 &615379728
 GameObject:
   m_ObjectHideFlags: 0
@@ -5135,6 +5139,88 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 728687936}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &733333921
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2095576406}
+    m_Modifications:
+    - target: {fileID: 8048397661862199856, guid: 8a96a952fd1e7e04ebca2b6ea1a42ccb, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048397661862199856, guid: 8a96a952fd1e7e04ebca2b6ea1a42ccb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2463614
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048397661862199856, guid: 8a96a952fd1e7e04ebca2b6ea1a42ccb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.11500473
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048397661862199856, guid: 8a96a952fd1e7e04ebca2b6ea1a42ccb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.027277922
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048397661862199856, guid: 8a96a952fd1e7e04ebca2b6ea1a42ccb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.1299999
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048397661862199856, guid: 8a96a952fd1e7e04ebca2b6ea1a42ccb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.5315096
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048397661862199856, guid: 8a96a952fd1e7e04ebca2b6ea1a42ccb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.03669938
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048397661862199856, guid: 8a96a952fd1e7e04ebca2b6ea1a42ccb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.38238138
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048397661862199856, guid: 8a96a952fd1e7e04ebca2b6ea1a42ccb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.92315036
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048397661862199856, guid: 8a96a952fd1e7e04ebca2b6ea1a42ccb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.015201387
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048397661862199856, guid: 8a96a952fd1e7e04ebca2b6ea1a42ccb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048397661862199856, guid: 8a96a952fd1e7e04ebca2b6ea1a42ccb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048397661862199856, guid: 8a96a952fd1e7e04ebca2b6ea1a42ccb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048397661862199884, guid: 8a96a952fd1e7e04ebca2b6ea1a42ccb, type: 3}
+      propertyPath: m_Name
+      value: Sword
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8a96a952fd1e7e04ebca2b6ea1a42ccb, type: 3}
+--- !u!1 &733333922 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8048397661862199884, guid: 8a96a952fd1e7e04ebca2b6ea1a42ccb, type: 3}
+  m_PrefabInstance: {fileID: 733333921}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &733333923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733333922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dd1f233c7678b749bd92e0bcaa9e2d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &734393597
 GameObject:
   m_ObjectHideFlags: 0
@@ -10059,7 +10145,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh54048
+  m_Name: pb_Mesh41104
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10673,7 +10759,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh54072
+  m_Name: pb_Mesh41128
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10837,7 +10923,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh54162
+  m_Name: pb_Mesh41236
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11092,6 +11178,11 @@ Transform:
   m_Father: {fileID: 128171778}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &2095576406 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 357394864747804998, guid: 5924a4aa1725c94419d92ea6787e221e, type: 3}
+  m_PrefabInstance: {fileID: 352549931680246533}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2135300943 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8794228730030885497, guid: 36d84d723ce75f94fb26295bd7a344f8, type: 3}
