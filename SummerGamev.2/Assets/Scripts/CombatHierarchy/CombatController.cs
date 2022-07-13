@@ -6,11 +6,12 @@ public class CombatController : MonoBehaviour
 {
     public Rigidbody rigid;
     public GameObject[] obj;
-    GameObject cam;
+    GameObject cam, player;
     Combat state;
     void Start()
     {
         cam = GameObject.FindWithTag("ModelRoot");
+        player = this.gameObject;
     }
     void Update()
     {
