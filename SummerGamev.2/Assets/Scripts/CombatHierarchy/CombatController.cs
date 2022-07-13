@@ -7,20 +7,22 @@ public class CombatController : MonoBehaviour
     public GameObject TalentTree;
     public GameObject[] obj, weapons;
     bool isEquipped = false;
+    bool isMeleeAttack = false;
     GameObject cam, player, weapon;
-    WeaponLogic weaponLogic;
+    Melee weaponLogic;
     Vector3 weaponPlace;
-    Quaternion weaponRotation;
+    Quaternion weaponRotation, activeWeaponRotation;
     Combat state;
     Rigidbody rigid;
     void Start()
     {
         cam = GameObject.FindWithTag("ModelRoot");
         player = this.gameObject;
-        weaponLogic = GetComponentInChildren<WeaponLogic>();
-        weapon = weaponLogic.gameObject;
+        weaponLogic = GetComponentInChildren<Melee>();
+        weapon = weaponLogic.gameObject.transform.GetChild(0).gameObject;
         weaponPlace = weapon.transform.localPosition;
         weaponRotation = weapon.transform.localRotation;
+        activeWeaponRotation = weaponRotation * Quaternion.Euler(0f, 0f, 100f);
     }
     void Update()
     {
@@ -29,7 +31,7 @@ public class CombatController : MonoBehaviour
             if(!isEquipped)
             {
                 weapon.transform.localPosition = new Vector3(weaponPlace.x, weaponPlace.y, weaponPlace.z * -3f);
-                weapon.transform.localRotation = weaponRotation;
+                weapon.transform.localRotation = activeWeaponRotation;
                 isEquipped = true;
             }
             else if(isEquipped)
@@ -38,6 +40,12 @@ public class CombatController : MonoBehaviour
                 weapon.transform.localRotation = weaponRotation;
                 isEquipped = false;
             }
+        }
+        if(Input.GetMouseButtonDown(0) && isEquipped && !isMeleeAttack)
+        {
+            //weaponLogic.StartThreeSixtySlashing();
+            weaponLogic.StartNormalSlashing();
+            isMeleeAttack = true;
         }
         if(Input.GetKeyDown("f"))
         {
@@ -57,6 +65,10 @@ public class CombatController : MonoBehaviour
         {
             StartCoroutine(StartBeam());
         }
+    }
+    public void MeleeAttackOff()
+    {
+        isMeleeAttack = false;
     }
     void StartFireball()
     {
