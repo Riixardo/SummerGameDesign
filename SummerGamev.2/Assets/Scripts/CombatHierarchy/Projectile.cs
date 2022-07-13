@@ -12,7 +12,7 @@ public class Projectile : Damage
     protected GameObject cam;
     public Vector3 InitialVelocity;
 
-    public Projectile(string n, Type type, int dmg, float speed) : base(n, type, dmg) 
+    public Projectile(string n, Type type, float speed) : base(n, type) 
     {
         this.speed = speed;
     }
@@ -21,9 +21,9 @@ public class Projectile : Damage
         cam = GameObject.FindWithTag("ModelRoot");
         InitialVelocity = cam.transform.forward * speed;
         rigid.velocity = InitialVelocity;
-        Destroy(obj, 5f);
+        Destroy(gameObject, 5f);
     }
-    protected void OnCollisionEnter(Collision collision)
+    protected void CollisionEnter(Collision collision, int damage)
     {
         Debug.Log(collision.gameObject);
         if (collision.gameObject.GetComponent<TakeDamage>())
@@ -34,7 +34,7 @@ public class Projectile : Damage
         bounceTimes++;
         if (bounceTimes >= maxBounceTimes)
         {
-            Destroy(obj);
+            Destroy(gameObject);
         }
     }
 }

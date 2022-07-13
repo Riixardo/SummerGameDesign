@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Fireball : Projectile
 {
-    public Fireball() : base("Fireball", Type.MAGIC, 3, 20f) 
+    public int damage = 3;
+    public Fireball() : base("Fireball", Type.MAGIC, 20f) 
     { 
     }
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         rigid = this.GetComponent<Rigidbody>();
-        obj = this.gameObject;
         base.Start();
         Debug.Log(InitialVelocity);
     }
@@ -20,6 +20,6 @@ public class Fireball : Projectile
         
     }
     private void OnCollisionEnter(Collision collision) {
-        base.OnCollisionEnter(collision);
+        base.CollisionEnter(collision, damage);
     }
 }

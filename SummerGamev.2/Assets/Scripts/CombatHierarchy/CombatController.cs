@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class CombatController : MonoBehaviour
 {
-    public Rigidbody rigid;
+    public GameObject TalentTree;
     public GameObject[] obj;
     GameObject cam, player;
     Combat state;
+    Rigidbody rigid;
     void Start()
     {
         cam = GameObject.FindWithTag("ModelRoot");
@@ -55,7 +56,16 @@ public class CombatController : MonoBehaviour
         }
     }
     void StartLightning() {
-        GameObject o = Instantiate(obj[3], cam.transform.position + cam.transform.forward * 10f + new Vector3(0f, 10f, 0f), this.transform.rotation);
+        GameObject o = Instantiate(obj[3], cam.transform.position + cam.transform.forward * 15f + new Vector3(0f, 15f, 0f), this.transform.rotation);
+        o.AddComponent<LightningCloud>();
+        o.GetComponent<LightningCloud>().LightningPosition = cam.transform.position + cam.transform.forward * 15f + new Vector3(0f, 7.5f, 0f);
+    }
+    public void CreateLightning(Vector3 LightningPosition) {
+        GameObject o = Instantiate(obj[4], LightningPosition, this.transform.rotation);
         o.AddComponent<LightningStrike>();
+        for(int i = 0; i < 2; i++) {
+            GameObject o1 = Instantiate(obj[4], LightningPosition + new Vector3(Random.Range(-4f, 4f), 0f, Random.Range(-4f, 4f)), this.transform.rotation);
+            o1.AddComponent<LightningStrike>();
+        }
     }
 }

@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class WindBlades : Projectile
 {
-    public WindBlades() : base("WindBlades", Type.MAGIC, 3, 20f)
+    public int damage = 3;
+    public WindBlades() : base("WindBlades", Type.MAGIC, 20f)
     {  
     }
     void Start()
     {
         player = GameObject.FindWithTag("Player"); 
         rigid = this.GetComponent<Rigidbody>();
-        obj = this.gameObject;
         base.Start();
         Debug.Log(InitialVelocity);
     }
@@ -21,6 +21,6 @@ public class WindBlades : Projectile
     }
     private void OnCollisionEnter(Collision collision)
     {
-        base.OnCollisionEnter(collision);
+        base.CollisionEnter(collision, damage);
     }
 }

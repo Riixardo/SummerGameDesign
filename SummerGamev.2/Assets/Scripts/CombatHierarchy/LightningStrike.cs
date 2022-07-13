@@ -4,24 +4,20 @@ using UnityEngine;
 
 public class LightningStrike : Damage
 {
+    private int damage = 10;
     private int iteration = 0;
-    public LightningStrike() : base("Lightning", Type.MAGIC, 10) 
+    public LightningStrike() : base("Lightning", Type.MAGIC) 
     {
     }
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        obj = this.gameObject;
-        StartCoroutine(Grow());
+        Destroy(gameObject, 1f);
     }
-    void Update()
-    {
-    }
-    IEnumerator Grow() {
-        while(iteration < 25) {
-            this.transform.localScale = this.transform.localScale * 1.1f;
-            iteration++;
-            yield return new WaitForSeconds(0.1f);
+    void OnTriggerEnter(Collider other) {
+        Debug.Log("LOLOLOL");
+        if(other.GetComponent<TakeDamage>()) {
+            other.GetComponent<TakeDamage>().LowerHealth(damage);
         }
     }
 }
