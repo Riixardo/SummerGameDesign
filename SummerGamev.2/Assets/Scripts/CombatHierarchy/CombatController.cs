@@ -48,21 +48,11 @@ public class CombatController : MonoBehaviour
         }
     }
     void StartIceSpikes() {
-        GameObject o1 = Instantiate(obj[2], cam.transform.position + cam.transform.forward * 3f + new Vector3(0f, 3f, 0f) + cam.transform.right * -4f, this.transform.rotation);
-        GameObject o2 = Instantiate(obj[2], cam.transform.position + cam.transform.forward * 3f + new Vector3(0f, 3f, 0f) + cam.transform.right * -2f, this.transform.rotation);
-        GameObject o3 = Instantiate(obj[2], cam.transform.position + cam.transform.forward * 3f + new Vector3(0f, 3f, 0f), this.transform.rotation);
-        GameObject o4 = Instantiate(obj[2], cam.transform.position + cam.transform.forward * 3f + new Vector3(0f, 3f, 0f) + cam.transform.right * 2f, this.transform.rotation);
-        GameObject o5 = Instantiate(obj[2], cam.transform.position + cam.transform.forward * 3f + new Vector3(0f, 3f, 0f) + cam.transform.right * 4f, this.transform.rotation);
-        o1.AddComponent<IceSpikes>();
-        o1.GetComponent<Rigidbody>().useGravity = false;
-        o2.AddComponent<IceSpikes>();
-        o2.GetComponent<Rigidbody>().useGravity = false;
-        o3.AddComponent<IceSpikes>();
-        o3.GetComponent<Rigidbody>().useGravity = false;
-        o4.AddComponent<IceSpikes>();
-        o4.GetComponent<Rigidbody>().useGravity = false;
-        o5.AddComponent<IceSpikes>();
-        o5.GetComponent<Rigidbody>().useGravity = false;
+        for(int i = -2; i < 3; i++) {
+            GameObject o = Instantiate(obj[2], cam.transform.position + cam.transform.forward * 3f + new Vector3(0f, 3f, 0f) + cam.transform.right * i * 2, this.transform.rotation);
+            o.AddComponent<IceSpikes>();
+            o.GetComponent<Rigidbody>().useGravity = false;
+        }
     }
     void StartLightning() {
         GameObject o = Instantiate(obj[3], cam.transform.position + cam.transform.forward * 10f + new Vector3(0f, 10f, 0f), this.transform.rotation);
