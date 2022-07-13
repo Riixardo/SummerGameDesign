@@ -43,7 +43,7 @@ namespace CMF
 
                 nextFireTime = Time.time + fireDelay;
                 GameObject firedProjectile = Instantiate(Projectile, muzzlePosition.position,muzzlePosition.rotation);
-                firedProjectile.GetComponent<Projectile>().initialVelocity = transform.forward * bulletSpeed;
+                firedProjectile.GetComponent<Projectile>().InitialVelocity = transform.forward * bulletSpeed;
             }
 
 

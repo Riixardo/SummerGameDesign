@@ -4,5 +4,5 @@ using UnityEngine;
 
 public enum Type
 {
-    DAMAGE, HEALING, MAGIC, MELEE, BUFF, MINION
+    HEALING, MAGIC, MELEE, BUFF, MINION
 };
