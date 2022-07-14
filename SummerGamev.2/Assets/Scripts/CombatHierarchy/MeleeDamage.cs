@@ -18,7 +18,7 @@ public class MeleeDamage : MonoBehaviour
         }
     }
     void OnCollisionExit(Collision c) {
-        if(meleeController.isSlashing) {
+        if(meleeController.isSlashing && c.gameObject.tag != "WindBlade") {
             if(c.gameObject.GetComponent<TakeDamage>()) {
             c.gameObject.GetComponent<TakeDamage>().LowerHealth(damage);
             }

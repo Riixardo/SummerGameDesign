@@ -6,7 +6,7 @@ public class Projectile : Damage
 {
     public int enemyLayer = 8;
     private int bounceTimes = 0;
-    public int maxBounceTimes = 1;
+    public int maxBounceTimes = 2;
     protected float speed;
     protected Rigidbody rigid;
     protected GameObject cam;
@@ -19,6 +19,7 @@ public class Projectile : Damage
     protected void Start()
     {
         cam = GameObject.FindWithTag("ModelRoot");
+        Physics.IgnoreCollision(GetComponent<Collider>(), player.GetComponent<Collider>(), true);
         InitialVelocity = cam.transform.forward * speed;
         rigid.velocity = InitialVelocity;
         Destroy(gameObject, 5f);
@@ -26,13 +27,15 @@ public class Projectile : Damage
     protected void CollisionEnter(Collision collision, int damage)
     {
         Debug.Log(collision.gameObject);
-        if (collision.gameObject.GetComponent<TakeDamage>())
+        if(collision.gameObject.GetComponent<TakeDamage>())
         {
             collision.gameObject.GetComponent<TakeDamage>().LowerHealth(damage);
-            Destroy(gameObject);
+        }
+        if (name != "WindBlades") {
+            rigid.useGravity = true;
         }
         bounceTimes++;
-        if (bounceTimes >= maxBounceTimes)
+        if(bounceTimes >= maxBounceTimes)
         {
             Destroy(gameObject);
         }

@@ -12,14 +12,16 @@ TagManager:
   - Spear
   - Sword
   - Axe
+  - WindBlade
+  - Weapon
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Weapon
   - Water
   - UI
-  - 
+  - Spell
   - 
   - 
   - 

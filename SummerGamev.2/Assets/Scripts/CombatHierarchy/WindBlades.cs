@@ -13,7 +13,6 @@ public class WindBlades : Projectile
         player = GameObject.FindWithTag("Player"); 
         rigid = this.GetComponent<Rigidbody>();
         base.Start();
-        Debug.Log(InitialVelocity);
     }
     void Update()
     {
@@ -21,6 +20,9 @@ public class WindBlades : Projectile
     }
     private void OnCollisionEnter(Collision collision)
     {
-        base.CollisionEnter(collision, damage);
+        if(collision.gameObject.tag != "WindBlade")
+        {
+            base.CollisionEnter(collision, damage);
+        }
     }
 }

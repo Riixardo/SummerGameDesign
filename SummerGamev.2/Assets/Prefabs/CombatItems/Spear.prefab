@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6522543090549747186}
   - component: {fileID: 6412191870041714426}
   - component: {fileID: 3085838334094408648}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5336626417588999061}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Spear
   m_TagString: Spear
   m_Icon: {fileID: 0}
@@ -143,9 +143,9 @@ GameObject:
   - component: {fileID: 5336626418060606747}
   - component: {fileID: 634216187001077881}
   - component: {fileID: 2370690976727875190}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Melee
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1643634101430984143}
   - component: {fileID: 3086513245741649619}
   - component: {fileID: 5386135662410757156}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LightningCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -36,7 +36,7 @@ public class Melee : MonoBehaviour
     {
         isSlashing = true;
         Quaternion startRotation = transform.localRotation;
-        float endZRot = 270f;
+        float endZRot = 360f;
         float duration = 1f;
         float t = 0;
         float time;
@@ -67,9 +67,6 @@ public class Melee : MonoBehaviour
         {
             t += Time.deltaTime * slashRate;
             Vector3 newEulerOffset = new Vector3(0, 0, 1) * (endZRot * t);
-            // global z rotation
-            // transform.localRotation = Quaternion.Euler(newEulerOffset) * startRotation;
-            // local z rotation
             childControls.localRotation = startRotation * Quaternion.Euler(newEulerOffset);
             yield return null;
         }

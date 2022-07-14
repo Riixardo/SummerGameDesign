@@ -20,12 +20,15 @@ public class IceSpikes : Projectile
     void Update()
     {
         time = time + Time.deltaTime;
-        if(time >= 1f) {
+        if(time >= 1f && rigid.isKinematic) {
             rigid.isKinematic = false;
             rigid.velocity = InitialVelocity;
         }
     }
     private void OnCollisionEnter(Collision collision) {
-        base.CollisionEnter(collision, damage);
+        if(collision.gameObject.tag != "Weapon" && collision.gameObject.tag != "Player")
+        {
+            base.CollisionEnter(collision, damage);
+        }
     }
 }

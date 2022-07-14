@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 343517871061517757}
   - component: {fileID: 8328663895363313432}
   - component: {fileID: 5559633817821482220}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Melee
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,7 +137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8259269134076661434}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LongSword
   m_TagString: Sword
   m_Icon: {fileID: 0}

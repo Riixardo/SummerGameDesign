@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 8351933312800326706}
   - component: {fileID: 5196139069743777135}
   - component: {fileID: 8327071237572466558}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WindBlade
-  m_TagString: Untagged
+  m_TagString: WindBlade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

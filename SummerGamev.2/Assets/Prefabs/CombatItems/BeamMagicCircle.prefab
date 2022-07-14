@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2641221834842628456}
   - component: {fileID: 5350551861391095273}
   - component: {fileID: 5922330693882750188}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BeamMagicCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44731683, g: 0.4972499, b: 0.57522124, a: 1}
+  m_IndirectSpecularColor: {r: 0.44731683, g: 0.49725002, b: 0.5752219, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4439,6 +4439,9 @@ MonoBehaviour:
   weapons:
   - {fileID: 8259269134076661435, guid: 5ba14b92741c743c781b5d346f7da89e, type: 3}
   - {fileID: 5336626417588999060, guid: ecf1e2ffbf1a044d89783f50ad194e0a, type: 3}
+  LightningDistance: 15
+  LightningHeight: 10
+  BeamDistance: 25
 --- !u!1 &615379728
 GameObject:
   m_ObjectHideFlags: 0
