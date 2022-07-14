@@ -8,6 +8,7 @@ public class CombatController : MonoBehaviour
     public GameObject[] obj, weapons;
     bool isEquipped = false;
     bool isMeleeAttack = false;
+    int weaponIndex;
     GameObject cam, player, weapon, weaponControls, rightArm;
     Melee weaponLogic;
     Vector3 weaponPlace;
@@ -28,7 +29,7 @@ public class CombatController : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab) && !weaponLogic.isSlashing)
         {
             if(!isEquipped)
             {
@@ -49,8 +50,16 @@ public class CombatController : MonoBehaviour
             weaponLogic.StartNormalSlashing();
             isMeleeAttack = true;
         }
-        if(Input.GetKeyDown("q")) {
-            //Destory()
+        if(Input.GetKeyDown("q") && !isEquipped) {
+            weaponIndex++;
+            if(weaponIndex >= weapons.Length) {
+                weaponIndex = 0;
+            }
+            Destroy(weapon);
+            GameObject temp = Instantiate(weapons[weaponIndex], weaponControls.transform.position, weaponControls.transform.rotation * weaponRotation, weaponControls.transform);
+            weapon = null;
+            weapon = temp;
+            weaponLogic.UpdateChild(weapon);
         }
         if(Input.GetKeyDown("f"))
         {

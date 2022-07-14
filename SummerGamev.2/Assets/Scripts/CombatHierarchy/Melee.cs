@@ -14,8 +14,12 @@ public class Melee : MonoBehaviour
     {
         childControls = transform.GetChild(0);
     }
-    void OnCollisionEnter(Collision collision) {
-        Debug.Log("wdwd");
+    public void UpdateChild(GameObject newWeapon) {
+        childControls = null;
+        childControls = newWeapon.transform;
+        if(childControls.gameObject != null) {
+            Debug.Log("HI");
+        }
     }
     public void StartThreeSixtySlashing()
     {
