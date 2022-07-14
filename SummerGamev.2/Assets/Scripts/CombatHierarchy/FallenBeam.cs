@@ -11,7 +11,7 @@ public class FallenBeam : Damage
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        Destroy(gameObject, 1.7f);
+        Destroy(gameObject, 1.4f);
     }
     void OnTriggerEnter(Collider other)
     {

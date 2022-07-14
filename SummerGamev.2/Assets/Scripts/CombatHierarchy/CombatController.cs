@@ -8,7 +8,7 @@ public class CombatController : MonoBehaviour
     public GameObject[] obj, weapons;
     bool isEquipped = false;
     bool isMeleeAttack = false;
-    int weaponIndex;
+    int weaponIndex = 1;
     GameObject cam, player, weapon, weaponControls, rightArm;
     Melee weaponLogic;
     Vector3 weaponPlace;
@@ -33,9 +33,16 @@ public class CombatController : MonoBehaviour
         {
             if(!isEquipped)
             {
-                weapon.transform.localPosition = new Vector3(1.1f, 0.44f, 0.62f);
-                weapon.transform.localRotation = activeWeaponRotation;
-                isEquipped = true;
+                if(weapon.tag == "Sword") {
+                    weapon.transform.localPosition = new Vector3(1.1f, 0.44f, 0.62f);
+                    weapon.transform.localRotation = activeWeaponRotation;
+                    isEquipped = true;
+                }
+                else if(weapon.tag == "Spear") {
+                    weapon.transform.localPosition = new Vector3(1.1f, 0.44f, 0.62f);
+                    weapon.transform.localRotation = Quaternion.Euler(0f, -90.7f, -55f);
+                    isEquipped = true;
+                }
             }
             else if(isEquipped)
             {
@@ -46,8 +53,13 @@ public class CombatController : MonoBehaviour
         }
         if(Input.GetMouseButtonDown(0) && isEquipped && !isMeleeAttack)
         {
-            //weaponLogic.StartThreeSixtySlashing();
-            weaponLogic.StartNormalSlashing();
+            if(weapon.tag == "Sword") {
+                //weaponLogic.StartThreeSixtySlashing();
+                weaponLogic.StartNormalSlashing();
+            }
+            else if(weapon.tag == "Spear") {
+                weaponLogic.StartSpearThrust();
+            }
             isMeleeAttack = true;
         }
         if(Input.GetKeyDown("q") && !isEquipped) {

@@ -9,17 +9,17 @@ public class Melee : MonoBehaviour
     public CombatController c;
     public float slashRate = 4;
     public bool isSlashing = false;
-    Transform childControls;
+    Transform childControls, childChildControls;
     void Start()
     {
         childControls = transform.GetChild(0);
+        childChildControls = transform.GetChild(0).GetChild(0);
     }
     public void UpdateChild(GameObject newWeapon) {
         childControls = null;
         childControls = newWeapon.transform;
-        if(childControls.gameObject != null) {
-            Debug.Log("HI");
-        }
+        childChildControls = null;
+        childChildControls = newWeapon.transform.GetChild(0);
     }
     public void StartThreeSixtySlashing()
     {
@@ -28,6 +28,9 @@ public class Melee : MonoBehaviour
     public void StartNormalSlashing()
     {
         StartCoroutine(NormalSlash());
+    }
+    public void StartSpearThrust() {
+        StartCoroutine(SpearThrust());
     }
     IEnumerator ThreeSixtySlashCoroutine()
     {
@@ -70,6 +73,34 @@ public class Melee : MonoBehaviour
             childControls.localRotation = startRotation * Quaternion.Euler(newEulerOffset);
             yield return null;
         }
+        childControls.localRotation = startRotation;
+        isSlashing = false;
+        c.MeleeAttackOff();
+    }
+    IEnumerator SpearThrust()
+    {
+        isSlashing = true;
+        Quaternion startRotation = childControls.localRotation;
+        Quaternion startChildRotation = childChildControls.localRotation;
+        Vector3 startPosition = childControls.localPosition;
+        float endYRot = 360f;
+        float distanceInFront = 2f;
+        float duration = 1f;
+        float t = 0;
+        while (t < 1f)
+        {
+            t += Time.deltaTime * slashRate;
+            Vector3 newEulerOffset = new Vector3(0, 1, 0) * (endYRot * t);
+            Vector3 newSpearOffset = new Vector3(0, 0, 1) * (distanceInFront * 2 * t);
+            if (t > 0.5f) {
+                newSpearOffset = new Vector3(0, 0, 1) * (distanceInFront) + new Vector3(0, 0, -1) * (distanceInFront * 2 * (t - 0.5f));
+            }
+            childChildControls.localRotation = startChildRotation * Quaternion.Euler(newEulerOffset);
+            childControls.localPosition = startPosition + newSpearOffset;
+            yield return null;
+        }
+        childControls.localRotation = startRotation;
+        childChildControls.localRotation = startChildRotation;
         childControls.localRotation = startRotation;
         isSlashing = false;
         c.MeleeAttackOff();
