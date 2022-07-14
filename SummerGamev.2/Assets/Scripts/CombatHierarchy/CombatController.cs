@@ -30,50 +30,8 @@ public class CombatController : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) && !weaponLogic.isSlashing)
-        {
-            if(!isEquipped)
-            {
-                if(weapon.tag == "Sword") {
-                    weapon.transform.localPosition = new Vector3(1.1f, 0.44f, 0.62f);
-                    weapon.transform.localRotation = activeWeaponRotation;
-                    isEquipped = true;
-                }
-                else if(weapon.tag == "Spear") {
-                    weapon.transform.localPosition = new Vector3(1.1f, 0.44f, 0.62f);
-                    weapon.transform.localRotation = Quaternion.Euler(0f, -90.7f, -55f);
-                    isEquipped = true;
-                }
-                else if (weapon.tag == "Axe")
-                {
-                    weapon.transform.localPosition = new Vector3(1.1f, 0.11f, 0.45f);
-                    weapon.transform.localRotation = activeWeaponRotation * Quaternion.Euler(30f, 60f, 20f);
-                    isEquipped = true;
-                }
-            }
-            else if(isEquipped)
-            {
-                weapon.transform.localPosition = weaponPlace;
-                weapon.transform.localRotation = weaponRotation;
-                isEquipped = false;
-            }
-        }
-        if(Input.GetMouseButtonDown(0) && isEquipped && !isMeleeAttack)
-        {
-            if(weapon.tag == "Sword") {
-                //weaponLogic.StartThreeSixtySlashing();
-                weaponLogic.StartNormalSlashing();
-            }
-            else if(weapon.tag == "Spear") {
-                weaponLogic.StartSpearThrust();
-            }
-            if (weapon.tag == "Axe")
-            {
-                //weaponLogic.StartThreeSixtySlashing();
-                weaponLogic.StartAxeSlashing();
-            }
-            isMeleeAttack = true;
-        }
+        EquipUnequipWeapon();
+        WeaponAttackLogic();
         if(Input.GetKeyDown("q") && !isEquipped) {
             weaponIndex++;
             if(weaponIndex >= weapons.Length) {
@@ -107,6 +65,60 @@ public class CombatController : MonoBehaviour
     public void MeleeAttackOff()
     {
         isMeleeAttack = false;
+    }
+    void EquipUnequipWeapon()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab) && !weaponLogic.isSlashing)
+        {
+            if (!isEquipped)
+            {
+                if (weapon.tag == "Sword")
+                {
+                    weapon.transform.localPosition = new Vector3(1.1f, 0.44f, 0.62f);
+                    weapon.transform.localRotation = activeWeaponRotation;
+                    isEquipped = true;
+                }
+                else if (weapon.tag == "Spear")
+                {
+                    weapon.transform.localPosition = new Vector3(1.1f, 0.44f, 0.62f);
+                    weapon.transform.localRotation = Quaternion.Euler(0f, -90.7f, -55f);
+                    isEquipped = true;
+                }
+                else if (weapon.tag == "Axe")
+                {
+                    weapon.transform.localPosition = new Vector3(1.1f, 0.11f, 0.45f);
+                    weapon.transform.localRotation = activeWeaponRotation * Quaternion.Euler(30f, 60f, 20f);
+                    isEquipped = true;
+                }
+            }
+            else if (isEquipped)
+            {
+                weapon.transform.localPosition = weaponPlace;
+                weapon.transform.localRotation = weaponRotation;
+                isEquipped = false;
+            }
+        }
+    }
+    void WeaponAttackLogic()
+    {
+        if (Input.GetMouseButtonDown(0) && isEquipped && !isMeleeAttack)
+        {
+            if (weapon.tag == "Sword")
+            {
+                //weaponLogic.StartThreeSixtySlashing();
+                weaponLogic.StartNormalSlashing();
+            }
+            else if (weapon.tag == "Spear")
+            {
+                weaponLogic.StartSpearThrust();
+            }
+            if (weapon.tag == "Axe")
+            {
+                //weaponLogic.StartThreeSixtySlashing();
+                weaponLogic.StartAxeSlashing();
+            }
+            isMeleeAttack = true;
+        }
     }
     void StartFireball()
     {
