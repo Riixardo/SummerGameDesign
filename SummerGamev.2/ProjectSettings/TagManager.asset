@@ -9,6 +9,9 @@ TagManager:
   - ModelRoot
   - RightArm
   - LeftArm
+  - Spear
+  - Sword
+  - Axe
   layers:
   - Default
   - TransparentFX

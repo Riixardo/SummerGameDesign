@@ -8,7 +8,7 @@ public class CombatController : MonoBehaviour
     public GameObject[] obj, weapons;
     bool isEquipped = false;
     bool isMeleeAttack = false;
-    GameObject cam, player, weapon;
+    GameObject cam, player, weapon, weaponControls, rightArm;
     Melee weaponLogic;
     Vector3 weaponPlace;
     Quaternion weaponRotation, activeWeaponRotation;
@@ -17,12 +17,14 @@ public class CombatController : MonoBehaviour
     void Start()
     {
         cam = GameObject.FindWithTag("ModelRoot");
+        rightArm = GameObject.FindWithTag("RightArm");
         player = this.gameObject;
         weaponLogic = GetComponentInChildren<Melee>();
-        weapon = weaponLogic.gameObject.transform.GetChild(0).gameObject;
+        weaponControls = weaponLogic.gameObject;
+        weapon = weaponControls.transform.GetChild(0).gameObject;
         weaponPlace = weapon.transform.localPosition;
         weaponRotation = weapon.transform.localRotation;
-        activeWeaponRotation = weaponRotation * Quaternion.Euler(0f, 0f, 100f);
+        activeWeaponRotation = weaponRotation * Quaternion.Euler(0f, -90f, 0f);
     }
     void Update()
     {
@@ -30,7 +32,7 @@ public class CombatController : MonoBehaviour
         {
             if(!isEquipped)
             {
-                weapon.transform.localPosition = new Vector3(weaponPlace.x, weaponPlace.y, weaponPlace.z * -3f);
+                weapon.transform.localPosition = new Vector3(1.1f, 0.44f, 0.62f);
                 weapon.transform.localRotation = activeWeaponRotation;
                 isEquipped = true;
             }
@@ -46,6 +48,9 @@ public class CombatController : MonoBehaviour
             //weaponLogic.StartThreeSixtySlashing();
             weaponLogic.StartNormalSlashing();
             isMeleeAttack = true;
+        }
+        if(Input.GetKeyDown("q")) {
+            //Destory()
         }
         if(Input.GetKeyDown("f"))
         {
