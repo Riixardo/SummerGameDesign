@@ -7,6 +7,8 @@ public class CombatController : MonoBehaviour
     public GameObject TalentTree;
     public GameObject[] obj, weapons;
     public float LightningDistance, LightningHeight, BeamDistance;
+    public float FireballCooldown, WindBladesCooldown, IceSpikesCooldown, LightningCooldown, LightBeamCooldown;
+    float FC, WC, IC, LC, LBC;
     bool isEquipped = false;
     bool isMeleeAttack = false;
     int weaponIndex = 1;
@@ -30,6 +32,7 @@ public class CombatController : MonoBehaviour
     }
     void Update()
     {
+        UpdateCooldown();
         EquipUnequipWeapon();
         WeaponAttackLogic();
         if(Input.GetKeyDown("q") && !isEquipped) {
@@ -61,6 +64,34 @@ public class CombatController : MonoBehaviour
         {
             StartCoroutine(StartBeam());
         }
+    }
+    void UpdateCooldown()
+    {
+        if (FireballCooldown > 0f)
+        {
+            FireballCooldown = FireballCooldown - Time.deltaTime;
+        }
+        else FireballCooldown = 0f;
+        if (WindBladesCooldown > 0f)
+        {
+            WindBladesCooldown = WindBladesCooldown - Time.deltaTime;
+        }
+        else WindBladesCooldown = 0f;
+        if (IceSpikesCooldown > 0f)
+        {
+            IceSpikesCooldown = IceSpikesCooldown - Time.deltaTime;
+        }
+        else IceSpikesCooldown = 0f;
+        if (LightningCooldown > 0f)
+        {
+            LightningCooldown = LightningCooldown - Time.deltaTime;
+        }
+        else LightningCooldown = 0f;
+        if (LightBeamCooldown > 0f)
+        {
+            LightBeamCooldown = LightBeamCooldown - Time.deltaTime;
+        }
+        else LightBeamCooldown = 0f;
     }
     public void MeleeAttackOff()
     {
