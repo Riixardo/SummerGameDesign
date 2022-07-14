@@ -44,6 +44,12 @@ public class CombatController : MonoBehaviour
                     weapon.transform.localRotation = Quaternion.Euler(0f, -90.7f, -55f);
                     isEquipped = true;
                 }
+                else if (weapon.tag == "Axe")
+                {
+                    weapon.transform.localPosition = new Vector3(1.1f, 0.11f, 0.45f);
+                    weapon.transform.localRotation = activeWeaponRotation * Quaternion.Euler(30f, 60f, 20f);
+                    isEquipped = true;
+                }
             }
             else if(isEquipped)
             {
@@ -60,6 +66,11 @@ public class CombatController : MonoBehaviour
             }
             else if(weapon.tag == "Spear") {
                 weaponLogic.StartSpearThrust();
+            }
+            if (weapon.tag == "Axe")
+            {
+                //weaponLogic.StartThreeSixtySlashing();
+                weaponLogic.StartAxeSlashing();
             }
             isMeleeAttack = true;
         }

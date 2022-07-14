@@ -69,7 +69,7 @@ public class MasterVolumeControl : MonoBehaviour, ResetScript
         }
 
         // Snag player controller audio reference
-        playerAudio = GameObject.Find("Player").GetComponent<AudioControl>();
+        playerAudio = GameObject.FindWithTag("Player").GetComponent<AudioControl>();
         if (playerAudio != null)  // Also adjust custom player controller audio if relevant
         {
             playerControllerAudioReferenceVal = playerAudio.audioClipVolume;

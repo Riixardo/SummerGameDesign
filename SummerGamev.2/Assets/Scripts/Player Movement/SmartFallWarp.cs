@@ -11,7 +11,7 @@ public class SmartFallWarp : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.Find("Player");
+        player = GameObject.FindWithTag("Player");
     }
 
     private void OnTriggerEnter(Collider other)

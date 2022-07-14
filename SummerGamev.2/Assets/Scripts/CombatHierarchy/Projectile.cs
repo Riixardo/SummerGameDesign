@@ -6,7 +6,7 @@ public class Projectile : Damage
 {
     public int enemyLayer = 8;
     private int bounceTimes = 0;
-    public int maxBounceTimes = 2;
+    public int maxBounceTimes = 1;
     protected float speed;
     protected Rigidbody rigid;
     protected GameObject cam;

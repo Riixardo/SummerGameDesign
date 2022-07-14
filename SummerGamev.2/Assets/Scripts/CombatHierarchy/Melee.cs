@@ -32,6 +32,10 @@ public class Melee : MonoBehaviour
     public void StartSpearThrust() {
         StartCoroutine(SpearThrust());
     }
+    public void StartAxeSlashing()
+    {
+        StartCoroutine(AxeSlash());
+    }
     IEnumerator ThreeSixtySlashCoroutine()
     {
         isSlashing = true;
@@ -98,6 +102,28 @@ public class Melee : MonoBehaviour
         }
         childControls.localRotation = startRotation;
         childChildControls.localRotation = startChildRotation;
+        childControls.localPosition = startPosition;
+        isSlashing = false;
+        c.MeleeAttackOff();
+    }
+    IEnumerator AxeSlash()
+    {
+        isSlashing = true;
+        Quaternion startRotation = childControls.localRotation;
+        float endXRot = 60f;
+        float duration = 1f;
+        float t = 0;
+        while (t < 1f)
+        {
+            t += Time.deltaTime * slashRate;
+            Vector3 newEulerOffset = new Vector3(1, 0, 0) * (endXRot * 2 * t);
+            if (t > 0.5f)
+            {
+                newEulerOffset = new Vector3(1, 0, 0) * (endXRot) + new Vector3(-1, 0, 0) * (endXRot * 2 * (t - 0.5f));
+            }
+            childControls.localRotation = startRotation * Quaternion.Euler(newEulerOffset);
+            yield return null;
+        }
         childControls.localRotation = startRotation;
         isSlashing = false;
         c.MeleeAttackOff();
