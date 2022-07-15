@@ -6,33 +6,21 @@ using TMPro;
 
 public class TalentSystem : MonoBehaviour
 {
-    // Talent Point Management
-
     public int numTalentPoints;
     int maxTalentPoints;
-
-
-    public void AddTalentPoint()
-    {
-        AddTalentPoints(1);
-    }
-
     public void AddTalentPoints(int points)
     {
         numTalentPoints += points;
         maxTalentPoints += points;
     }
-
     public bool HaveTalentPoints()
     {
         return numTalentPoints > 0;
     }
-
     public int GetNumTalentPoints()
     {
         return numTalentPoints;
     }
-
     public void SpendTalentPoints(int num)
     {
         numTalentPoints -= num;
@@ -42,20 +30,18 @@ public class TalentSystem : MonoBehaviour
         }
         UpdateTalentUIData();
     }
-
-
-
-
     // Talent Skill Tree Code
 
     // UI Components
     public TMP_Text numTalentsText;
-    public TMP_Text speedUpText;
-    public TMP_Text jumpsUpText;
-    public TMP_Text hpUpText;
+    public TMP_Text manaText;
+    public TMP_Text magicDmgText;
+    public TMP_Text phyDmgText;
+    public TMP_Text hpText;
 
-    public Button speedUpButton;
-    public Button jumpsUpButton;
+    public Button manaUpButton;
+    public Button magicDmgButton;
+    public Button phyDmgButton;
     public Button hpUpButton;
 
     // Talent data
@@ -63,63 +49,56 @@ public class TalentSystem : MonoBehaviour
     string jumpsUpBaseText = "Num jumps: ";
     string hpUpBaseText = "Total hp increase: ";
 
-    int speedTalentProgressionState;
-    int jumpTalentProgressionState;
-    int hpTalentProgressionState;
-
-    float[] speedTalentUpgrades = { 1.2f, 1.4f, 1.6f};
-    int[] jumpTalentUpgrades = { 2, 3, 4 };
-    float[] hpTalentUpgrades = { 1.1f, 1.2f, 1.3f };
-
-    // Access to player data
-
+    public int manaProgressionState;
+    public int magicDmgProgressionState;
+    public int phyDmgProgressionState;
+    public int hpTalentProgressionState;
 
     private void OnEnable()
     {
         UpdateTalentUIData();
     }
-
     public void UpdateTalentUIData()
     {
         SetTalentInfoCards();
         SetButtonInteractability();
-        
-        // Num talent point UI update
-        numTalentsText.text = "Current Points: " + numTalentPoints;
     }
-
     // Reset UI text to base states
     void SetTalentInfoCards()
     {
-        speedUpText.text = "Current cost: " + (speedTalentProgressionState+1) + "\n" + speedUpBaseText + (speedTalentProgressionState * 20) + "%!";
-        Debug.Log("Speed: " + speedUpText.text);
-        jumpsUpText.text = "Current cost: " + (jumpTalentProgressionState + 1) + "\n" + jumpsUpBaseText + (jumpTalentProgressionState + 1);
-        Debug.Log("Jumps: " + jumpsUpText.text);
-        hpUpText.text = "Current cost: " + (hpTalentProgressionState + 1) + "\n" + hpUpBaseText + (hpTalentProgressionState * 10) + "%!";
-        Debug.Log("HP: " + hpUpText.text);
-        hpUpText.text = hpUpBaseText + "0";
-        jumpsUpText.text = jumpsUpBaseText + "1";
+        numTalentsText.text = "" + numTalentPoints;
+        manaText.text = "" + manaProgressionState;
+        magicDmgText.text = "" + magicDmgProgressionState;
+        phyDmgText.text = "" + phyDmgProgressionState;
+        hpText.text = "" + hpTalentProgressionState;
     }
-
     void SetButtonInteractability()
     {
-        if(numTalentPoints < speedTalentProgressionState+1 || !(speedTalentProgressionState < speedTalentUpgrades.Length))
+        if(numTalentPoints < 1)
         {
-            speedUpButton.interactable = false;
+            manaUpButton.interactable = false;
         }
         else
         {
-            speedUpButton.interactable = true;
+            manaUpButton.interactable = true;
         }
-        if(numTalentPoints < jumpTalentProgressionState+1 || !(jumpTalentProgressionState < jumpTalentUpgrades.Length))
+        if(numTalentPoints < 1)
         {
-            jumpsUpButton.interactable = false;
+            magicDmgButton.interactable = false;
         }
         else
         {
-            jumpsUpButton.interactable = true;
+            magicDmgButton.interactable = true;
         }
-        if(numTalentPoints < hpTalentProgressionState+1 || !(hpTalentProgressionState < hpTalentUpgrades.Length))
+        if(numTalentPoints < 1)
+        {
+            phyDmgButton.interactable = false;
+        }
+        else
+        {
+            phyDmgButton.interactable = true;
+        }
+        if (numTalentPoints < 1)
         {
             hpUpButton.interactable = false;
         }
@@ -128,29 +107,34 @@ public class TalentSystem : MonoBehaviour
             hpUpButton.interactable = true;
         }
     }
-
-    public void PurchaseSpeedUpgrade()
+    public void PurchaseManaUpgrade()
     {
-        numTalentPoints -= speedTalentProgressionState + 1;
-        speedTalentProgressionState++;
+        //numTalentPoints -= speedTalentProgressionState + 1;
+        numTalentPoints--;
+        manaProgressionState++;
         UpdateTalentUIData();
     }
-
-    public void PurchaseJumpUpgrade()
+    public void PurchaseMagicUpgrade()
     {
-        numTalentPoints -= jumpTalentProgressionState + 1;
-        jumpTalentProgressionState++;
+        //numTalentPoints -= jumpTalentProgressionState + 1;
+        numTalentPoints--;
+        magicDmgProgressionState++;
         UpdateTalentUIData();
     }
-
+    public void PurchasePhysicalUpgrade()
+    {
+        //numTalentPoints -= hpTalentProgressionState + 1;
+        numTalentPoints--;
+        phyDmgProgressionState++;
+        UpdateTalentUIData();
+    }
     public void PurchaseHPUpgrade()
     {
-        numTalentPoints -= hpTalentProgressionState + 1;
+        //numTalentPoints -= hpTalentProgressionState + 1;
+        numTalentPoints--;
         hpTalentProgressionState++;
         UpdateTalentUIData();
     }
-
-
     public void ResetTalentPoints()
     {
         numTalentPoints = maxTalentPoints;
@@ -158,13 +142,11 @@ public class TalentSystem : MonoBehaviour
         ResetProgressionStates();
         SetTalentInfoCards();
     }
-
     void ResetProgressionStates()
     {
-        speedTalentProgressionState = 0;
+        manaProgressionState = 0;
+        magicDmgProgressionState = 0;
+        phyDmgProgressionState = 0;
         hpTalentProgressionState = 0;
-        jumpTalentProgressionState = 0;
     }
-
-
 }

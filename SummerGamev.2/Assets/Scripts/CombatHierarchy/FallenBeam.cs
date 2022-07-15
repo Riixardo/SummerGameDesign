@@ -11,12 +11,12 @@ public class FallenBeam : Damage
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        Destroy(gameObject, 1.4f);
+        Destroy(gameObject, 1.2f);
         StartCoroutine(Grow());
     }
     IEnumerator Grow() {
         while(enabled) {
-            this.transform.localScale = this.transform.localScale * 1.1f;
+            this.transform.localScale = this.transform.localScale * 1.2f;
             yield return new WaitForSeconds(0.05f);
         }
     }

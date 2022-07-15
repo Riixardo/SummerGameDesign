@@ -26,7 +26,7 @@ public class BeamCircle : MonoBehaviour
             iteration++;
             yield return new WaitForSeconds(0.05f);
         }
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.4f);
         if(CreateBeam)
         {
             player.GetComponent<CombatController>().CreateBeam(this.transform.position);

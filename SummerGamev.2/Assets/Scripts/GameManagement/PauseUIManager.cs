@@ -7,6 +7,7 @@ public class PauseUIManager : MonoBehaviour, ResetScript
     // Attach various components of pause menu UI
     public Canvas mainPauseMenu;
     public Canvas talentSystemCanvas;
+    public Canvas playerUICanvas;
     public MasterVolumeControl volumeControl;
     public bool disableAudioInMenu = true;
 
@@ -32,6 +33,7 @@ public class PauseUIManager : MonoBehaviour, ResetScript
             {
                 talentSystemCanvas.gameObject.SetActive(false);
                 mainPauseMenu.gameObject.SetActive(true);
+                playerUICanvas.gameObject.SetActive(false);
                 Time.timeScale = 0;
 
                 if(disableAudioInMenu && volumeControl != null)
@@ -42,6 +44,7 @@ public class PauseUIManager : MonoBehaviour, ResetScript
             else
             {
                 mainPauseMenu.gameObject.SetActive(false);
+                playerUICanvas.gameObject.SetActive(true);
                 Time.timeScale = 1;
 
                 if (disableAudioInMenu && volumeControl != null)

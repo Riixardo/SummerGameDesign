@@ -4,11 +4,23 @@ using UnityEngine;
 
 public class TakeDamage : MonoBehaviour
 {
-    public int health;
+    public int health, deathExp;
+    GameObject gameManager;
+    LevelingSystem l;
+    void Awake()
+    {
+        gameManager = GameObject.Find("GameManager");
+        l = gameManager.GetComponentInChildren<LevelingSystem>();
+    }
     void Update()
     {
-        if(health <= 0)
+        CheckHealth();
+    }
+    void CheckHealth()
+    {
+        if (health <= 0)
         {
+            l.EarnExperience(deathExp);
             GameObject.Destroy(this.gameObject);
         }
     }

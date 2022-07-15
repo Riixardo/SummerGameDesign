@@ -167,8 +167,8 @@ public class CombatController : MonoBehaviour
             if (weapon.tag == "Axe")
             {
                 //weaponLogic.StartThreeSixtySlashing();
-                //weaponLogic.StartAxeSlashing();
-                weaponLogic.StartSwingThrow();
+                weaponLogic.StartAxeSlashing();
+                //weaponLogic.StartSwingThrow();
             }
             isMeleeAttack = true;
         }
@@ -253,6 +253,15 @@ public class CombatController : MonoBehaviour
                 default: break;
             }
             yield return new WaitForSeconds(0.3f);
+        }
+        for(int i = 10; i < 30; i++)
+        {
+            GameObject o = Instantiate(obj[5], v + new Vector3(0f, 8f * i, 0f), this.transform.rotation);
+            o.AddComponent<BeamCircle>();
+            BeamCircle c = o.GetComponent<BeamCircle>();
+            if (i % 2 == 0) c.size = 28;
+            else c.size = 30;
+            c.Lifespan = 2.9f;
         }
     }
     public void CreateBeam(Vector3 position)

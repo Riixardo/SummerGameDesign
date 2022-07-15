@@ -148,13 +148,13 @@ public class Melee : MonoBehaviour
         float endYRot = 360f;
         float distanceInFront = 25f;
         float t = 0;
-        while (t < 2f)
+        while (t < 10f)
         {
             t += Time.deltaTime;
             Vector3 newEulerOffset = new Vector3(0, 1, 0) * (endYRot * t);
             Vector3 newSpearOffset = forward * (distanceInFront * 2 * t);
             if (t > 1f) {
-                newSpearOffset = (player.transform.position - childControls.position).normalized * 0.1f;
+                newSpearOffset = (player.transform.position - childControls.position).normalized * 1f;
                 childControls.position = childControls.position + newSpearOffset;
                 if((childControls.position - player.transform.position).magnitude < 5f) {
                     break;
