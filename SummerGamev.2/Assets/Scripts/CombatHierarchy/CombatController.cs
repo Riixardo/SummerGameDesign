@@ -200,25 +200,25 @@ public class CombatController : MonoBehaviour
             BeamCircle c = o.GetComponent<BeamCircle>();
             switch (i)
             {
-                case 1: c.size = 15;
+                case 1: c.size = 25;
                     c.Lifespan = 5f;
                     break;
-                case 2: c.size = 20;
+                case 2: c.size = 28;
                     c.Lifespan = 4.7f;
                     break;
-                case 3: c.size = 23;
+                case 3: c.size = 30;
                     c.Lifespan = 4.4f;
                     break;
-                case 4: c.size = 25;
+                case 4: c.size = 31;
                     c.Lifespan = 4.1f;
                     break;
-                case 5: c.size = 23;
+                case 5: c.size = 30;
                     c.Lifespan = 3.8f;
                     break;
-                case 6: c.size = 20;
+                case 6: c.size = 28;
                     c.Lifespan = 3.5f;
                     break;
-                case 7: c.size = 15;
+                case 7: c.size = 25;
                     c.Lifespan = 3.2f;
                     c.CreateBeam = true;
                     break;

@@ -5,7 +5,8 @@ using UnityEngine;
 public class Fireball : Projectile
 {
     public int damage = 3;
-    public int size = 50;
+    public int size = 20;
+    public float growthSpeed = 100f;
     public Fireball() : base("Fireball", Type.MAGIC, 20f) 
     { 
     }
@@ -26,8 +27,9 @@ public class Fireball : Projectile
     {
         for(int i = 0; i < size; i++)
         {
-            this.transform.localScale = this.transform.localScale * 1.01f;
-            yield return null;
+            Debug.Log(Time.deltaTime);
+            this.transform.localScale = this.transform.localScale * 1.05f;
+            yield return new WaitForSeconds(0.05f);
         }
         rigid.isKinematic = false;
         rigid.velocity = InitialVelocity;
