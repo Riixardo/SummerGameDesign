@@ -156,7 +156,8 @@ public class CombatController : MonoBehaviour
             if (weapon.tag == "Sword")
             {
                 //weaponLogic.StartThreeSixtySlashing();
-                weaponLogic.StartNormalSlashing();
+                //weaponLogic.StartNormalSlashing();
+                weaponLogic.StartSwingThrow();
             }
             else if (weapon.tag == "Spear")
             {
@@ -166,7 +167,8 @@ public class CombatController : MonoBehaviour
             if (weapon.tag == "Axe")
             {
                 //weaponLogic.StartThreeSixtySlashing();
-                weaponLogic.StartAxeSlashing();
+                //weaponLogic.StartAxeSlashing();
+                weaponLogic.StartSwingThrow();
             }
             isMeleeAttack = true;
         }
