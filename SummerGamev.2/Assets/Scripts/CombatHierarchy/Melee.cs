@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CMF;
 
 public class Melee : MonoBehaviour
 {
@@ -10,10 +11,13 @@ public class Melee : MonoBehaviour
     public float slashRate = 4;
     public bool isSlashing = false;
     Transform childControls, childChildControls;
+    GameObject player, modelRoot;
     void Start()
     {
         childControls = transform.GetChild(0);
         childChildControls = transform.GetChild(0).GetChild(0);
+        player = GameObject.FindWithTag("Player");
+        modelRoot = GameObject.FindWithTag("ModelRoot");
     }
     public void UpdateChild(GameObject newWeapon) {
         childControls = null;
@@ -35,6 +39,9 @@ public class Melee : MonoBehaviour
     public void StartAxeSlashing()
     {
         StartCoroutine(AxeSlash());
+    }
+    public void StartSwingThrow() {
+        StartCoroutine(SwingThrow());
     }
     IEnumerator ThreeSixtySlashCoroutine()
     {
@@ -125,6 +132,46 @@ public class Melee : MonoBehaviour
             yield return null;
         }
         childControls.localRotation = startRotation;
+        isSlashing = false;
+        c.MeleeAttackOff();
+    }
+    IEnumerator SwingThrow()
+    {
+        isSlashing = true;
+        Quaternion startRotation = childControls.localRotation;
+        //Quaternion startChildRotation = childChildControls.localRotation;
+        Vector3 startPosition = childControls.localPosition;
+        Vector3 forward = modelRoot.transform.forward;
+        childControls.parent = null;
+        Quaternion startWorldRotation = childControls.rotation;
+        Vector3 startWorldPosition = childControls.position;
+        float endYRot = 360f;
+        float distanceInFront = 25f;
+        float t = 0;
+        while (t < 2f)
+        {
+            t += Time.deltaTime;
+            Vector3 newEulerOffset = new Vector3(0, 1, 0) * (endYRot * t);
+            Vector3 newSpearOffset = forward * (distanceInFront * 2 * t);
+            if (t > 1f) {
+                newSpearOffset = (player.transform.position - childControls.position).normalized * 0.1f;
+                childControls.position = childControls.position + newSpearOffset;
+                if((childControls.position - player.transform.position).magnitude < 5f) {
+                    break;
+                }
+            }
+            else {
+                childControls.position = startWorldPosition + newSpearOffset;
+            }
+            Debug.Log(player.transform.position - childControls.position);
+            //childChildControls.localRotation = startChildRotation * Quaternion.Euler(newEulerOffset);
+            childControls.rotation = startWorldRotation * Quaternion.Euler(newEulerOffset);
+            yield return null;
+        }
+        childControls.parent = this.transform;
+        childControls.localRotation = startRotation;
+        //childChildControls.localRotation = startChildRotation;
+        childControls.localPosition = startPosition;
         isSlashing = false;
         c.MeleeAttackOff();
     }

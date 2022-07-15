@@ -32,12 +32,12 @@ public class CombatController : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(LC);
-        Debug.Log(FC);
-        Debug.Log(WC);
-        Debug.Log(LBC);
-        Debug.Log(VC);
-        Debug.Log(IC);
+        //Debug.Log(LC);
+        //Debug.Log(FC);
+        //Debug.Log(WC);
+        //Debug.Log(LBC);
+        //Debug.Log(VC);
+        //Debug.Log(IC);
         UpdateCooldown();
         EquipUnequipWeapon();
         WeaponAttackLogic();
@@ -160,7 +160,8 @@ public class CombatController : MonoBehaviour
             }
             else if (weapon.tag == "Spear")
             {
-                weaponLogic.StartSpearThrust();
+                //weaponLogic.StartSpearThrust();
+                weaponLogic.StartSwingThrow();
             }
             if (weapon.tag == "Axe")
             {

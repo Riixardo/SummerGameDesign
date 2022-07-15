@@ -11394,9 +11394,33 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2852560804884470142, guid: d4ff22614f7729a49a9375c9810a9fbe, type: 3}
+      propertyPath: FireballCooldown
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2852560804884470142, guid: d4ff22614f7729a49a9375c9810a9fbe, type: 3}
+      propertyPath: VoidBeamCooldown
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2852560804884470142, guid: d4ff22614f7729a49a9375c9810a9fbe, type: 3}
+      propertyPath: IceSpikesCooldown
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2852560804884470142, guid: d4ff22614f7729a49a9375c9810a9fbe, type: 3}
+      propertyPath: LightBeamCooldown
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2852560804884470142, guid: d4ff22614f7729a49a9375c9810a9fbe, type: 3}
+      propertyPath: LightningCooldown
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2852560804884470142, guid: d4ff22614f7729a49a9375c9810a9fbe, type: 3}
       propertyPath: obj.Array.data[7]
       value: 
       objectReference: {fileID: 5302740714320107135, guid: fbbaf70f529bb42509ba855e7f475f31, type: 3}
+    - target: {fileID: 2852560804884470142, guid: d4ff22614f7729a49a9375c9810a9fbe, type: 3}
+      propertyPath: WindBladesCooldown
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2853228737338296093, guid: d4ff22614f7729a49a9375c9810a9fbe, type: 3}
       propertyPath: m_RootOrder
       value: 0
