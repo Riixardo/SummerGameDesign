@@ -7,8 +7,8 @@ public class CombatController : MonoBehaviour
     public GameObject TalentTree;
     public GameObject[] obj, weapons;
     public float LightningDistance, LightningHeight, BeamDistance;
-    public float FireballCooldown, WindBladesCooldown, IceSpikesCooldown, LightningCooldown, LightBeamCooldown;
-    float FC, WC, IC, LC, LBC;
+    public float FireballCooldown, WindBladesCooldown, IceSpikesCooldown, LightningCooldown, LightBeamCooldown, VoidBeamCooldown;
+    float FC, WC, IC, LC, LBC, VC;
     bool isEquipped = false;
     bool isMeleeAttack = false;
     int weaponIndex = 1;
@@ -32,6 +32,12 @@ public class CombatController : MonoBehaviour
     }
     void Update()
     {
+        Debug.Log(LC);
+        Debug.Log(FC);
+        Debug.Log(WC);
+        Debug.Log(LBC);
+        Debug.Log(VC);
+        Debug.Log(IC);
         UpdateCooldown();
         EquipUnequipWeapon();
         WeaponAttackLogic();
@@ -46,52 +52,65 @@ public class CombatController : MonoBehaviour
             weapon = temp;
             weaponLogic.UpdateChild(weapon);
         }
-        if(Input.GetKeyDown("f"))
+        if(Input.GetKeyDown("f") && FC == 0f)
         {
             StartFireball();
+            FC = FireballCooldown;
         }
-        if(Input.GetKeyDown("r"))
+        if(Input.GetKeyDown("r") && WC == 0f)
         {
             StartCoroutine(StartWindBlades());
+            WC = WindBladesCooldown;
         }
-        if(Input.GetKeyDown("t")) {
+        if(Input.GetKeyDown("t") && IC == 0f) {
             StartIceSpikes();
+            IC = IceSpikesCooldown;
         }
-        if(Input.GetKeyDown("e")) {
+        if(Input.GetKeyDown("e") && LC == 0f) {
             StartLightning();
+            LC = LightningCooldown;
         }
-        if(Input.GetKeyDown("g"))
+        if(Input.GetKeyDown("g") && LBC == 0f)
         {
             StartCoroutine(StartBeam());
+            LBC = LightBeamCooldown;
+        }
+        if(Input.GetKeyDown("v") && VC == 0f) {
+            StartVoidBeam();
+            VC = VoidBeamCooldown;
         }
     }
     void UpdateCooldown()
     {
-        if (FireballCooldown > 0f)
+        if (FC > 0f)
         {
-            FireballCooldown = FireballCooldown - Time.deltaTime;
+            FC = FC - Time.deltaTime;
         }
-        else FireballCooldown = 0f;
-        if (WindBladesCooldown > 0f)
+        else FC = 0f;
+        if (WC > 0f)
         {
-            WindBladesCooldown = WindBladesCooldown - Time.deltaTime;
+            WC = WC - Time.deltaTime;
         }
-        else WindBladesCooldown = 0f;
-        if (IceSpikesCooldown > 0f)
+        else WC = 0f;
+        if (IC > 0f)
         {
-            IceSpikesCooldown = IceSpikesCooldown - Time.deltaTime;
+            IC = IC - Time.deltaTime;
         }
-        else IceSpikesCooldown = 0f;
-        if (LightningCooldown > 0f)
+        else IC = 0f;
+        if (LC > 0f)
         {
-            LightningCooldown = LightningCooldown - Time.deltaTime;
+            LC = LC - Time.deltaTime;
         }
-        else LightningCooldown = 0f;
-        if (LightBeamCooldown > 0f)
+        else LC = 0f;
+        if (LBC > 0f)
         {
-            LightBeamCooldown = LightBeamCooldown - Time.deltaTime;
+            LBC = LBC - Time.deltaTime;
         }
-        else LightBeamCooldown = 0f;
+        else LBC = 0f;
+        if (VC > 0f) {
+            VC = VC - Time.deltaTime;
+        }
+        else VC = 0f;
     }
     public void MeleeAttackOff()
     {
@@ -193,32 +212,38 @@ public class CombatController : MonoBehaviour
     IEnumerator StartBeam()
     {
         Vector3 v = cam.transform.position + cam.transform.forward * BeamDistance;
-        for (int i = 1; i < 8; i++)
+        for (int i = 1; i < 10; i++)
         {
             GameObject o = Instantiate(obj[5], v + new Vector3(0f, 8f * i, 0f), this.transform.rotation);
             o.AddComponent<BeamCircle>();
             BeamCircle c = o.GetComponent<BeamCircle>();
             switch (i)
             {
-                case 1: c.size = 25;
-                    c.Lifespan = 5f;
+                case 1: c.size = 28;
+                    c.Lifespan = 5.6f;
                     break;
-                case 2: c.size = 28;
+                case 2: c.size = 30;
+                    c.Lifespan = 5.3f;
+                    break;
+                case 3: c.size = 32;
+                    c.Lifespan = 5.0f;
+                    break;
+                case 4: c.size = 33;
                     c.Lifespan = 4.7f;
                     break;
-                case 3: c.size = 30;
+                case 5: c.size = 34;
                     c.Lifespan = 4.4f;
                     break;
-                case 4: c.size = 31;
+                case 6: c.size = 33;
                     c.Lifespan = 4.1f;
                     break;
-                case 5: c.size = 30;
+                case 7: c.size = 32;
                     c.Lifespan = 3.8f;
                     break;
-                case 6: c.size = 28;
+                case 8: c.size = 30;
                     c.Lifespan = 3.5f;
                     break;
-                case 7: c.size = 25;
+                case 9: c.size = 28;
                     c.Lifespan = 3.2f;
                     c.CreateBeam = true;
                     break;
@@ -231,5 +256,9 @@ public class CombatController : MonoBehaviour
     {
         GameObject o = Instantiate(obj[6], position + new Vector3(0f, -28f, 0f), this.transform.rotation);
         o.AddComponent<FallenBeam>();
+    }
+    void StartVoidBeam() {
+        GameObject o = Instantiate(obj[7], cam.transform.position + cam.transform.forward * 3f + new Vector3(0f, 3f, 0f), cam.transform.rotation);
+        o.AddComponent<VoidBeam>();
     }
 }

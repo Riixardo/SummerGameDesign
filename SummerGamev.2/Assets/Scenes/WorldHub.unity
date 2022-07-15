@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44731683, g: 0.49725002, b: 0.5752219, a: 1}
+  m_IndirectSpecularColor: {r: 0.44731683, g: 0.4972499, b: 0.57522124, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4047,7 +4047,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24448
+  m_Name: pb_Mesh24896
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10035,7 +10035,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24566
+  m_Name: pb_Mesh25014
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10649,7 +10649,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24590
+  m_Name: pb_Mesh25038
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10813,7 +10813,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24698
+  m_Name: pb_Mesh25142
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11385,6 +11385,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2852560804884470142, guid: d4ff22614f7729a49a9375c9810a9fbe, type: 3}
+      propertyPath: BeamDistance
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 2852560804884470142, guid: d4ff22614f7729a49a9375c9810a9fbe, type: 3}
+      propertyPath: obj.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2852560804884470142, guid: d4ff22614f7729a49a9375c9810a9fbe, type: 3}
+      propertyPath: obj.Array.data[7]
+      value: 
+      objectReference: {fileID: 5302740714320107135, guid: fbbaf70f529bb42509ba855e7f475f31, type: 3}
     - target: {fileID: 2853228737338296093, guid: d4ff22614f7729a49a9375c9810a9fbe, type: 3}
       propertyPath: m_RootOrder
       value: 0
