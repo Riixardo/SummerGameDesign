@@ -9,7 +9,7 @@ public class Projectile : Damage
     public int maxBounceTimes = 1;
     public float speed;
     protected Rigidbody rigid;
-    protected GameObject cam;
+    protected GameObject cam, talentUI, player;
     public Vector3 InitialVelocity;
 
     public Projectile(string n, Type type) : base(n, type) 
@@ -19,6 +19,8 @@ public class Projectile : Damage
     protected void Start()
     {
         player = GameObject.FindWithTag("Player");
+        talentUI = player.GetComponent<CombatController>().GetTalentSystem();
+        Damage += talentUI.GetComponent<TalentSystem>().magicDmgProgressionState;
         rigid = this.GetComponent<Rigidbody>();
         cam = GameObject.FindWithTag("ModelRoot");
         Physics.IgnoreCollision(GetComponent<Collider>(), player.GetComponent<Collider>(), true);

@@ -15,8 +15,7 @@ public class FallenBeam : Damage
     {
         player = GameObject.FindWithTag("Player");
         talentUI = player.GetComponent<CombatController>().GetTalentSystem();
-        Damage += talentUI.GetComponent<TalentSystem>().phyDmgProgressionState;
-        player = GameObject.FindWithTag("Player");
+        Damage += talentUI.GetComponent<TalentSystem>().magicDmgProgressionState;
         Destroy(gameObject, 1.2f);
         StartCoroutine(Grow());
     }

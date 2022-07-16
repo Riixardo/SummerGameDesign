@@ -15,6 +15,7 @@ TagManager:
   - WindBlade
   - Weapon
   - CameraRoot
+  - TalentUI
   layers:
   - Default
   - TransparentFX

@@ -6,7 +6,6 @@ public class Combat : MonoBehaviour{
 
     public Type type;
     public string Name;
-    protected GameObject player;
     
     public Combat (string n, Type type) {
         Name = n;

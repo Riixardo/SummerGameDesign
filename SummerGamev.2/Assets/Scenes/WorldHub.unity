@@ -9901,7 +9901,7 @@ GameObject:
   - component: {fileID: 1678527604}
   m_Layer: 0
   m_Name: TalentUI
-  m_TagString: Untagged
+  m_TagString: TalentUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10010,7 +10010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64156106cd44250409492c7a5114b78d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numTalentPoints: 3
+  numTalentPoints: 15
   numTalentsText: {fileID: 587670876}
   manaText: {fileID: 1315948677}
   magicDmgText: {fileID: 2141838725}
@@ -12922,6 +12922,10 @@ PrefabInstance:
     - target: {fileID: 2853228737338296093, guid: d4ff22614f7729a49a9375c9810a9fbe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3412431862769025881, guid: d4ff22614f7729a49a9375c9810a9fbe, type: 3}
+      propertyPath: Damage
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4ff22614f7729a49a9375c9810a9fbe, type: 3}

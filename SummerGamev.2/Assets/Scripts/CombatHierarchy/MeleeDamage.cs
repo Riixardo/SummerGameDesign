@@ -7,8 +7,12 @@ public class MeleeDamage : MonoBehaviour
     Melee meleeController;
     Type type = Type.MELEE;
     public int Damage;
+    GameObject player, talentUI;
     void Start() {
         meleeController = GetComponentInParent<Melee>();
+        player = GameObject.FindWithTag("Player");
+        talentUI = player.GetComponent<CombatController>().GetTalentSystem();
+        Damage += talentUI.GetComponent<TalentSystem>().phyDmgProgressionState;
     }
     void OnCollisionEnter(Collision c) {
         if(meleeController.isSlashing) {
