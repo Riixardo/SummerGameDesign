@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class VoidBeamDamage : MonoBehaviour
 {
-    public int damage = 12;
+    public int Damage = 12;
     GameObject player;
     void Start()
     {
@@ -14,7 +14,7 @@ public class VoidBeamDamage : MonoBehaviour
     {
         if (other.GetComponent<TakeDamage>())
         {
-            other.GetComponent<TakeDamage>().LowerHealth(damage);
+            other.GetComponent<TakeDamage>().LowerHealth(Damage);
         }
     }
 }

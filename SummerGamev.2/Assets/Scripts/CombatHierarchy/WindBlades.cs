@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class WindBlades : Projectile
 {
-    public int damage = 3;
-    public WindBlades() : base("WindBlades", Type.MAGIC, 20f)
+    public WindBlades() : base("WindBlades", Type.MAGIC)
     {  
     }
     void Start()
     {
-        player = GameObject.FindWithTag("Player"); 
-        rigid = this.GetComponent<Rigidbody>();
         base.Start();
     }
     void Update()
@@ -22,7 +19,7 @@ public class WindBlades : Projectile
     {
         if(collision.gameObject.tag != "WindBlade")
         {
-            base.CollisionEnter(collision, damage);
+            base.OnCollisionEnter(collision);
         }
     }
 }

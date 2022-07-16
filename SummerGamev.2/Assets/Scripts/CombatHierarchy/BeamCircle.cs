@@ -5,7 +5,7 @@ using UnityEngine;
 public class BeamCircle : MonoBehaviour
 {
     GameObject player;
-    public int size;
+    public int Size;
     public float Lifespan;
     public bool CreateBeam = false;
     void Start()
@@ -20,7 +20,7 @@ public class BeamCircle : MonoBehaviour
     IEnumerator Grow()
     {
         int iteration = 0;
-        while (iteration < size)
+        while (iteration < Size)
         {
             this.transform.localScale = this.transform.localScale * 1.1f;
             iteration++;

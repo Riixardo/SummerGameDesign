@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class IceSpikes : Projectile
 {
-    public int damage = 1;
     float time = 0f;
-    public IceSpikes() : base("IceSpikes", Type.MAGIC, 30f) 
+    public IceSpikes() : base("IceSpikes", Type.MAGIC) 
     {
     }
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
-        rigid = this.GetComponent<Rigidbody>();
         base.Start();
         rigid.isKinematic = true;
         Debug.Log(InitialVelocity);
@@ -28,7 +25,7 @@ public class IceSpikes : Projectile
     private void OnCollisionEnter(Collision collision) {
         if(collision.gameObject.tag != "Weapon" && collision.gameObject.tag != "Player")
         {
-            base.CollisionEnter(collision, damage);
+            base.OnCollisionEnter(collision);
         }
     }
 }

@@ -19,6 +19,12 @@ public class LightningCloud : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
         player.GetComponent<CombatController>().CreateLightning(LightningPosition);
+        yield return new WaitForSeconds(0.2f);
+        player.GetComponent<CombatController>().CreateLightning(LightningPosition);
+        yield return new WaitForSeconds(0.2f);
+        player.GetComponent<CombatController>().CreateLightning(LightningPosition);
+        yield return new WaitForSeconds(0.2f);
+        player.GetComponent<CombatController>().CreateLightning(LightningPosition);
         Destroy(gameObject, 1);
     }
 }

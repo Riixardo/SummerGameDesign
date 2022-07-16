@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LightningStrike : Damage
 {
-    private int damage = 10;
+    public int Damage = 10;
     public LightningStrike() : base("Lightning", Type.MAGIC) 
     {
     }
@@ -16,7 +16,7 @@ public class LightningStrike : Damage
     void OnTriggerEnter(Collider other) {
         Debug.Log("LOLOLOL");
         if(other.GetComponent<TakeDamage>()) {
-            other.GetComponent<TakeDamage>().LowerHealth(damage);
+            other.GetComponent<TakeDamage>().LowerHealth(Damage);
         }
     }
 }

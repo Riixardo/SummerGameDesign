@@ -154,9 +154,9 @@ public class Melee : MonoBehaviour
             Vector3 newEulerOffset = new Vector3(0, 1, 0) * (endYRot * t);
             Vector3 newSpearOffset = forward * (distanceInFront * 2 * t);
             if (t > 1f) {
-                newSpearOffset = (player.transform.position - childControls.position).normalized * 1f;
+                newSpearOffset = (player.transform.position - childControls.position).normalized * 0.1f;
                 childControls.position = childControls.position + newSpearOffset;
-                if((childControls.position - player.transform.position).magnitude < 5f) {
+                if((childControls.position - player.transform.position).magnitude < 3f) {
                     break;
                 }
             }
@@ -166,7 +166,7 @@ public class Melee : MonoBehaviour
             Debug.Log(player.transform.position - childControls.position);
             //childChildControls.localRotation = startChildRotation * Quaternion.Euler(newEulerOffset);
             childControls.rotation = startWorldRotation * Quaternion.Euler(newEulerOffset);
-            yield return null;
+            yield return new WaitForSeconds(0.001f);
         }
         childControls.parent = this.transform;
         childControls.localRotation = startRotation;

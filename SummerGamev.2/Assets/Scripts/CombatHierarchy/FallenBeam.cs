@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FallenBeam : Damage
 {
-    private int damage = 50;
+    public int Damage = 50;
     public FallenBeam() : base("FallenBeam", Type.MAGIC)
     {
     }
@@ -25,7 +25,7 @@ public class FallenBeam : Damage
         Debug.Log("LOLOLOL");
         if (other.GetComponent<TakeDamage>())
         {
-            other.GetComponent<TakeDamage>().LowerHealth(damage);
+            other.GetComponent<TakeDamage>().LowerHealth(Damage);
         }
     }
 }

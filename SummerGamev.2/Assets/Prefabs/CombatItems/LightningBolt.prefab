@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7841940584176868197}
   - component: {fileID: 6123790676285546012}
   - component: {fileID: 1088650985251211064}
+  - component: {fileID: 3622638259566663467}
   m_Layer: 6
   m_Name: LightningBolt
   m_TagString: Untagged
@@ -97,3 +98,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3622638259566663467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5397320313316500578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20b18dc8f1e274485ba3d65898953d45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  Name: Lightning
+  Damage: 7

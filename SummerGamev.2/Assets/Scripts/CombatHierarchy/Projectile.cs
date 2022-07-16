@@ -4,32 +4,36 @@ using UnityEngine;
 
 public class Projectile : Damage
 {
-    public int enemyLayer = 8;
+    public int Damage;
     private int bounceTimes = 0;
     public int maxBounceTimes = 1;
-    protected float speed;
+    public float speed;
     protected Rigidbody rigid;
     protected GameObject cam;
     public Vector3 InitialVelocity;
 
-    public Projectile(string n, Type type, float speed) : base(n, type) 
+    public Projectile(string n, Type type) : base(n, type) 
     {
         this.speed = speed;
     }
     protected void Start()
     {
+        player = GameObject.FindWithTag("Player");
+        rigid = this.GetComponent<Rigidbody>();
         cam = GameObject.FindWithTag("ModelRoot");
         Physics.IgnoreCollision(GetComponent<Collider>(), player.GetComponent<Collider>(), true);
-        InitialVelocity = cam.transform.forward * speed;
-        rigid.velocity = InitialVelocity;
+        if(!(type == Type.MINION)) {
+            InitialVelocity = cam.transform.forward * speed;
+            rigid.velocity = InitialVelocity;
+        }
         Destroy(gameObject, 5f);
     }
-    protected void CollisionEnter(Collision collision, int damage)
+    protected void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision.gameObject);
         if(collision.gameObject.GetComponent<TakeDamage>())
         {
-            collision.gameObject.GetComponent<TakeDamage>().LowerHealth(damage);
+            collision.gameObject.GetComponent<TakeDamage>().LowerHealth(Damage);
         }
         if (name != "WindBlades") {
             rigid.useGravity = true;

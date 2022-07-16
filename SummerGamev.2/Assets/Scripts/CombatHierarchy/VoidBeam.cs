@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class VoidBeam : MonoBehaviour
 {
+    public int Size = 25;
+    public float CoroutineDelay = 0.02f;
     GameObject player;
     void Start()
     {
@@ -12,10 +14,10 @@ public class VoidBeam : MonoBehaviour
     IEnumerator GrowAndCollapse() {
         int t = 0;
         Vector3 startPosition = this.transform.localScale;
-        while(t < 25) {
+        while(t < Size) {
             t++;
             this.transform.localScale = new Vector3(this.transform.localScale.x * 1.1f, this.transform.localScale.y * 1.1f, -Mathf.Abs(this.transform.localScale.z * 1.2f));
-            yield return new WaitForSeconds(0.02f);
+            yield return new WaitForSeconds(CoroutineDelay);
         }
         Vector3 intermediatePosition = this.transform.localScale;
         while(t > 0) {
@@ -24,7 +26,7 @@ public class VoidBeam : MonoBehaviour
             if(this.transform.localScale.x < 0.1) {
                 break;
             }
-            yield return new WaitForSeconds(0.02f);
+            yield return new WaitForSeconds(CoroutineDelay);
         }
         Destroy(gameObject);
     }

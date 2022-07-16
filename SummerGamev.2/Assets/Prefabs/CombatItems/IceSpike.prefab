@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1901128073747970409}
   - component: {fileID: 1901128073747970408}
   - component: {fileID: 4867170250631476118}
+  - component: {fileID: -1898422990546395926}
   m_Layer: 6
   m_Name: IceSpike
   m_TagString: Untagged
@@ -115,3 +116,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-1898422990546395926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901128073747970415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0028c19ef93b0479a9c24d936f6a7661, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  Name: IceSpikes
+  Damage: 1
+  maxBounceTimes: 1
+  speed: 20
+  InitialVelocity: {x: 0, y: 0, z: 0}

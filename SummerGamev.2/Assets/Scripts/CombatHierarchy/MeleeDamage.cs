@@ -6,21 +6,21 @@ public class MeleeDamage : MonoBehaviour
 {
     Melee meleeController;
     Type type = Type.MELEE;
-    public int damage;
+    public int Damage;
     void Start() {
         meleeController = GetComponentInParent<Melee>();
     }
     void OnCollisionEnter(Collision c) {
         if(meleeController.isSlashing) {
             if(c.gameObject.GetComponent<TakeDamage>()) {
-            c.gameObject.GetComponent<TakeDamage>().LowerHealth(damage);
+            c.gameObject.GetComponent<TakeDamage>().LowerHealth(Damage);
             }
         }
     }
     void OnCollisionExit(Collision c) {
         if(meleeController.isSlashing && c.gameObject.tag != "WindBlade") {
             if(c.gameObject.GetComponent<TakeDamage>()) {
-            c.gameObject.GetComponent<TakeDamage>().LowerHealth(damage);
+            c.gameObject.GetComponent<TakeDamage>().LowerHealth(Damage);
             }
         }
     }

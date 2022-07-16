@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class Fireball : Projectile
 {
-    public int damage = 3;
     public int size = 20;
     public float growthSpeed = 100f;
-    public Fireball() : base("Fireball", Type.MAGIC, 20f) 
+    public Fireball() : base("Fireball", Type.MAGIC) 
     { 
     }
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
-        rigid = this.GetComponent<Rigidbody>();
         base.Start();
         rigid.isKinematic = true;
         Debug.Log(InitialVelocity);
@@ -35,6 +32,6 @@ public class Fireball : Projectile
         rigid.velocity = InitialVelocity;
     }
     private void OnCollisionEnter(Collision collision) {
-        base.CollisionEnter(collision, damage);
+        base.OnCollisionEnter(collision);
     }
 }
