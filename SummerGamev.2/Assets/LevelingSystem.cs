@@ -34,6 +34,8 @@ public class LevelingSystem : MonoBehaviour
         currentExp -= expToNextLvl;
         expToNextLvl = (int)(expToNextLvl * expReqPerLvlFactor);
         talents.AddTalentPoints(3);
+        ////Code here to route new stats unlocked from level up to master stats manager
+        ////It should be 3 hp, 1 magic damage, 1 phy damage, 1 mana (tentative)
         CheckLevelUp(); // Call recursively in case multiple levels are gained at once
     }
 }

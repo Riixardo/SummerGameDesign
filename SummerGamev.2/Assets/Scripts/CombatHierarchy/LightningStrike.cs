@@ -6,14 +6,15 @@ public class LightningStrike : Damage
 {
     public int Damage = 10;
     GameObject player, talentUI;
+    PlayerStatsManager statsHandler;
     public LightningStrike() : base("Lightning", Type.MAGIC) 
     {
     }
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        talentUI = player.GetComponent<CombatController>().GetTalentSystem();
-        Damage += talentUI.GetComponent<TalentSystem>().magicDmgProgressionState;
+        statsHandler = player.GetComponent<CombatController>().GetStatSystem();
+        Damage += statsHandler.magicDamage;
         Destroy(gameObject, 1f);
     }
     void OnTriggerEnter(Collider other) {

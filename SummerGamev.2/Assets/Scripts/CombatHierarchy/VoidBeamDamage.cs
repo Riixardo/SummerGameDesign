@@ -6,11 +6,12 @@ public class VoidBeamDamage : MonoBehaviour
 {
     public int Damage = 12;
     GameObject player, talentUI;
+    PlayerStatsManager statsHandler;
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        talentUI = player.GetComponent<CombatController>().GetTalentSystem();
-        Damage += talentUI.GetComponent<TalentSystem>().magicDmgProgressionState;
+        statsHandler = player.GetComponent<CombatController>().GetStatSystem();
+        Damage += statsHandler.magicDamage;
     }
     void OnTriggerEnter(Collider other)
     {

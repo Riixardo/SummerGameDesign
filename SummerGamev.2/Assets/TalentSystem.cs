@@ -61,6 +61,7 @@ public class TalentSystem : MonoBehaviour
     public void UpdateTalentUIData()
     {
         SetTalentInfoCards();
+        SetSkillTreeInfoCard();
         SetButtonInteractability();
     }
     // Reset UI text to base states
@@ -106,6 +107,24 @@ public class TalentSystem : MonoBehaviour
         {
             hpUpButton.interactable = true;
         }
+        if(numTalentPoints < 10 || skillTreeProgression != 0) {
+            dashButton.interactable = false;
+        }
+        else {
+            dashButton.interactable = true;
+        }
+        if(numTalentPoints < 10 || skillTreeProgression != 1) {
+            iceButton.interactable = false;
+        }
+        else {
+            iceButton.interactable = true;
+        }
+        if(numTalentPoints < 15 || skillTreeProgression != 2) {
+            windButton.interactable = false;
+        }
+        else {
+            windButton.interactable = true;
+        }
     }
     public void PurchaseManaUpgrade()
     {
@@ -149,4 +168,55 @@ public class TalentSystem : MonoBehaviour
         phyDmgProgressionState = 0;
         hpTalentProgressionState = 0;
     }
+    public TMP_Text dashUnlockText;
+    public TMP_Text iceSpikesUnlockText;
+    public TMP_Text windBladesUnlockText;
+
+    public Button dashButton;
+    public Button iceButton;
+    public Button windButton;
+
+    public int size;
+
+    int skillTreeProgression;
+    
+    void SetSkillTreeInfoCard() {
+        if(skillTreeProgression > 0) {
+            dashUnlockText.text = "DASH UNLOCKED";
+        }
+        else dashUnlockText.text = "Required Points: 10";
+        if(skillTreeProgression > 1) {
+            iceSpikesUnlockText.text = "ICE UNLOCKED";
+        }
+        else iceSpikesUnlockText.text = "Required Points: 10";
+        if(skillTreeProgression > 2) {
+            windBladesUnlockText.text = "WIND UNLOCKED";
+        }
+        else windBladesUnlockText.text = "Required Points: 15";
+    }
+    public void PurchaseDash() {
+        if(skillTreeProgression != 0) {
+            return;
+        }
+        skillTreeProgression++;
+        numTalentPoints -= 10;
+        UpdateTalentUIData();
+    }
+    public void PurchaseIceSpikes() {
+        if(skillTreeProgression != 1) {
+            return;
+        }
+        skillTreeProgression++;
+        numTalentPoints -= 10;
+        UpdateTalentUIData();
+    }
+    public void PurchaseWindBlades() {
+        if(skillTreeProgression != 2) {
+            return;
+        }
+        skillTreeProgression++;
+        numTalentPoints -= 15;
+        UpdateTalentUIData();
+    }
+
 }

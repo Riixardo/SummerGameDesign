@@ -13,6 +13,7 @@ public class CombatController : MonoBehaviour
     bool isEquipped = false;
     bool isMeleeAttack = false;
     int weaponIndex = 1, minionCycle = 0;
+    PlayerStatsManager statsHandler;
     GameObject player, weapon, weaponControls, rightArm, talentUI;
     Melee weaponLogic;
     Vector3 weaponPlace;
@@ -23,6 +24,7 @@ public class CombatController : MonoBehaviour
     void Start()
     {
         talentUI = GameObject.Find("TalentUI");
+        statsHandler = GameObject.Find("StatManager").GetComponent<PlayerStatsManager>();
         rightArm = GameObject.FindWithTag("RightArm");
         player = this.gameObject;
         weaponLogic = GetComponentInChildren<Melee>();
@@ -185,6 +187,9 @@ public class CombatController : MonoBehaviour
     }
     public GameObject GetTalentSystem() {
         return talentUI;
+    }
+    public PlayerStatsManager GetStatSystem() {
+        return statsHandler;
     }
     void StartFireball()
     {

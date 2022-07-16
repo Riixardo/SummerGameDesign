@@ -11,6 +11,7 @@ public class Projectile : Damage
     protected Rigidbody rigid;
     protected GameObject cam, talentUI, player;
     public Vector3 InitialVelocity;
+    PlayerStatsManager statsHandler;
 
     public Projectile(string n, Type type) : base(n, type) 
     {
@@ -19,8 +20,8 @@ public class Projectile : Damage
     protected void Start()
     {
         player = GameObject.FindWithTag("Player");
-        talentUI = player.GetComponent<CombatController>().GetTalentSystem();
-        Damage += talentUI.GetComponent<TalentSystem>().magicDmgProgressionState;
+        statsHandler = player.GetComponent<CombatController>().GetStatSystem();
+        Damage += statsHandler.magicDamage;
         rigid = this.GetComponent<Rigidbody>();
         cam = GameObject.FindWithTag("ModelRoot");
         Physics.IgnoreCollision(GetComponent<Collider>(), player.GetComponent<Collider>(), true);
