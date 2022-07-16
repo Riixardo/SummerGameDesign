@@ -130,7 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 4
   Name: MinionBullet
-  damage: 5
+  Damage: 5
   maxBounceTimes: 0
   speed: 25
   InitialVelocity: {x: 0, y: 0, z: 0}

@@ -113,3 +113,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   Name: FallenBeam
+  Damage: 50
+  scaleMultiplier: 1.2

@@ -213,6 +213,7 @@ MonoBehaviour:
   rotateSpeed: 10
   attackInterval: 2
   detectionRange: 40
+  speed: 0.1
   player: {fileID: 0}
   sc: {fileID: 0}
   projectileSpeed: 50

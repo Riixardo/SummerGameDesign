@@ -5,23 +5,24 @@ using UnityEngine;
 public class CombatController : MonoBehaviour
 {
     public GameObject TalentTree;
+    public GameObject ModelRoot;
     public GameObject[] obj, weapons;
-    public float LightningDistance, LightningHeight, BeamDistance;
+    public float LightningDistance, LightningHeight, BeamDistance, minionDistance;
     public float FireballCooldown, WindBladesCooldown, IceSpikesCooldown, LightningCooldown, LightBeamCooldown, VoidBeamCooldown, MinionCooldown;
     float FC, WC, IC, LC, LBC, VC, MC;
     bool isEquipped = false;
     bool isMeleeAttack = false;
-    int weaponIndex = 1;
-    GameObject cam, player, weapon, weaponControls, rightArm;
+    int weaponIndex = 1, minionCycle = 0;
+    GameObject player, weapon, weaponControls, rightArm, talentUI;
     Melee weaponLogic;
     Vector3 weaponPlace;
     Quaternion weaponRotation, activeWeaponRotation;
     Combat state;
     Rigidbody rigid;
-    List<GameObject> minions = new List<GameObject>();
+    GameObject[] minions = new GameObject[3];
     void Start()
     {
-        cam = GameObject.FindWithTag("ModelRoot");
+        talentUI = GameObject.Find("TalentUI");
         rightArm = GameObject.FindWithTag("RightArm");
         player = this.gameObject;
         weaponLogic = GetComponentInChildren<Melee>();
@@ -39,6 +40,7 @@ public class CombatController : MonoBehaviour
         //Debug.Log(LBC);
         //Debug.Log(VC);
         //Debug.Log(IC);
+        //Debug.Log(MC);
         UpdateCooldown();
         EquipUnequipWeapon();
         WeaponAttackLogic();
@@ -82,7 +84,6 @@ public class CombatController : MonoBehaviour
         }
         if(Input.GetKeyDown("b") && MC == 0f) {
             CreateMinions();
-            MC = MinionCooldown;
         }
     }
     void UpdateCooldown()
@@ -182,9 +183,12 @@ public class CombatController : MonoBehaviour
             isMeleeAttack = true;
         }
     }
+    public GameObject GetTalentSystem() {
+        return talentUI;
+    }
     void StartFireball()
     {
-        GameObject o = Instantiate(obj[0], cam.transform.position + cam.transform.forward * 3f + new Vector3(0f, 3f, 0f), this.transform.rotation);
+        GameObject o = Instantiate(obj[0], ModelRoot.transform.position + ModelRoot.transform.forward * 3f + new Vector3(0f, 3f, 0f), this.transform.rotation);
         o.GetComponent<Rigidbody>().useGravity = false;
     }
     IEnumerator StartWindBlades()
@@ -192,20 +196,20 @@ public class CombatController : MonoBehaviour
         for(int i = 0; i < 3; i++)
         {
             Quaternion rotate = Quaternion.Euler(Random.Range(-45f, 45f), this.transform.rotation.y + 90f, Random.Range(-45f, 45f));
-            GameObject o = Instantiate(obj[1], cam.transform.position + cam.transform.forward * 3f + new Vector3(0f, 3f, 0f), rotate);
+            GameObject o = Instantiate(obj[1], ModelRoot.transform.position + ModelRoot.transform.forward * 3f + new Vector3(0f, 3f, 0f), rotate);
             o.GetComponent<Rigidbody>().useGravity = false;
             yield return new WaitForSeconds(0.2f);
         }
     }
     void StartIceSpikes() {
         for(int i = -2; i < 3; i++) {
-            GameObject o = Instantiate(obj[2], cam.transform.position + cam.transform.forward * 3f + new Vector3(0f, 3f, 0f) + cam.transform.right * i * 2, this.transform.rotation);
+            GameObject o = Instantiate(obj[2], ModelRoot.transform.position + ModelRoot.transform.forward * 3f + new Vector3(0f, 3f, 0f) + ModelRoot.transform.right * i * 2, this.transform.rotation);
             o.GetComponent<Rigidbody>().useGravity = false;
         }
     }
     void StartLightning() {
-        GameObject o = Instantiate(obj[3], cam.transform.position + cam.transform.forward * LightningDistance + new Vector3(0f, LightningHeight, 0f), this.transform.rotation);
-        o.GetComponent<LightningCloud>().LightningPosition = cam.transform.position + cam.transform.forward * LightningDistance + new Vector3(0f, LightningHeight * 0.5f, 0f);
+        GameObject o = Instantiate(obj[3], ModelRoot.transform.position + ModelRoot.transform.forward * LightningDistance + new Vector3(0f, LightningHeight, 0f), this.transform.rotation);
+        o.GetComponent<LightningCloud>().LightningPosition = ModelRoot.transform.position + ModelRoot.transform.forward * LightningDistance + new Vector3(0f, LightningHeight * 0.5f, 0f);
     }
     public void CreateLightning(Vector3 LightningPosition) {
         GameObject o = Instantiate(obj[4], LightningPosition, this.transform.rotation);
@@ -217,7 +221,7 @@ public class CombatController : MonoBehaviour
     }
     IEnumerator StartBeam()
     {
-        Vector3 v = cam.transform.position + cam.transform.forward * BeamDistance;
+        Vector3 v = ModelRoot.transform.position + ModelRoot.transform.forward * BeamDistance;
         for (int i = 1; i < 10; i++)
         {
             GameObject o = Instantiate(obj[5], v + new Vector3(0f, 8f * i, 0f), this.transform.rotation);
@@ -270,12 +274,26 @@ public class CombatController : MonoBehaviour
         GameObject o = Instantiate(obj[6], position + new Vector3(0f, -28f, 0f), this.transform.rotation);
     }
     void StartVoidBeam() {
-        GameObject o = Instantiate(obj[7], cam.transform.position + cam.transform.forward * 3f + new Vector3(0f, 3f, 0f), cam.transform.rotation);
+        GameObject o = Instantiate(obj[7], ModelRoot.transform.position + ModelRoot.transform.forward * 3f + new Vector3(0f, 3f, 0f), ModelRoot.transform.rotation);
     }
     void CreateMinions() {
-        if(minions.Count < 3) {
-            GameObject o = Instantiate(obj[8], cam.transform.position + cam.transform.forward + Vector3.Slerp(-cam.transform.right * 3f, cam.transform.right * 3f, minions.Count * 0.5f) + new Vector3(0f, (-Mathf.Pow(minions.Count-1, 2) + 1) * 3f, 0f) , new Quaternion(), cam.transform);
-            minions.Add(o);
+        int indexOfNewMinion = -1;
+        for(int i = 0; i < minions.Length; i++) {
+            if(indexOfNewMinion == -1 && minions[i] == null) {
+                indexOfNewMinion = i;
+            }
+        }
+        if(indexOfNewMinion > -1) {
+            Vector3 placement = ModelRoot.transform.position + ModelRoot.transform.forward + Vector3.Slerp(-ModelRoot.transform.right * minionDistance, ModelRoot.transform.right * minionDistance, indexOfNewMinion * 0.51f) + new Vector3(0f, (Mathf.Pow(indexOfNewMinion-1, 2) * -0.5f + 1) * minionDistance, 0f);
+            GameObject o = Instantiate(obj[8], placement, new Quaternion());
+            GameObject o1 = Instantiate(obj[10], placement, new Quaternion(), ModelRoot.transform);
+            o.GetComponent<TurretMinion>().Origin = o1;
+            minions[indexOfNewMinion] = o;
+            minionCycle++;
+            if(minionCycle >= 3) {
+                MC = MinionCooldown;
+                minionCycle = 0;
+            }
         }
     }
     public void CreateMinionBullets(Vector3 position, Vector3 velocity) {
