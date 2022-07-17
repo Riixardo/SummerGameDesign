@@ -5,6 +5,9 @@ using TMPro;
 
 public class LevelingSystem : MonoBehaviour
 {
+    float time;
+    int frames;
+    public TMP_Text fps;
     public int level;
     public int currentExp;
     public int expToNextLvl;
@@ -14,6 +17,15 @@ public class LevelingSystem : MonoBehaviour
     private void Start()
     {
         levelText.text = "Level " + level;
+    }
+    void Update() {
+        time += Time.deltaTime;
+        frames++;
+        if(time >= 1.000f) {
+            fps.text = frames.ToString();
+            time = 0f;
+            frames = 0;
+        }
     }
     public void EarnExperience(int exp)
     {
