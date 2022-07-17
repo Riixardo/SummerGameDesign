@@ -161,6 +161,7 @@ public class CombatController : MonoBehaviour
             }
         }
     }
+    //Toggle, untoggle between basic attack and throw skill
     void WeaponAttackLogic()
     {
         if (Input.GetMouseButtonDown(0) && isEquipped && !isMeleeAttack)
@@ -173,14 +174,14 @@ public class CombatController : MonoBehaviour
             }
             else if (weapon.tag == "Spear")
             {
-                //weaponLogic.StartSpearThrust();
-                weaponLogic.StartSwingThrow();
+                weaponLogic.StartSpearThrust();
+                //weaponLogic.StartSwingThrow();
             }
             if (weapon.tag == "Axe")
             {
                 //weaponLogic.StartThreeSixtySlashing();
-                weaponLogic.StartAxeSlashing();
-                //weaponLogic.StartSwingThrow();
+                //weaponLogic.StartAxeSlashing();
+                weaponLogic.StartSwingThrow();
             }
             isMeleeAttack = true;
         }
