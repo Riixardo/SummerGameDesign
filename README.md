@@ -1,5 +1,7 @@
 # SummerGameDesign 2022 <br>
 <h1>Hello, this was a class game made during a summer pilot game design course (2022)</h1>
+<h2>About the game</h2>
+<p>The game was a class project and the first of its kind at my school. In 3 weeks we had to design a game with the help of our coding teacher, Mr. Rowell, who already provided some core logic pre-implemented into the game such as a singletong and a moveable character.</p>
 <h2>Here are my contributions towards the game</h2>
 <hr>
 <ul>
