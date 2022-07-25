@@ -6,8 +6,6 @@
   <li><b>Magic and Melee Combat System</b>
   <p>I created the weapon attacks and magic attacks using precise IEnumerators and timing logic to give it a fantasical feel.</p>
   </li>
-  <li></li>
   <li><b>Leveling System and Talent System</b>
   <p>Along with a handful of others, brainstormed and implemented the logic for creating unlockable power-ups and custom stat modifications.</p>
   </li>
-  <li></li>
