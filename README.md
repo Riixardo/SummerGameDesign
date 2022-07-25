@@ -3,5 +3,7 @@
 <h2>Here are my contributions towards the game</h2>
 <hr>
 <ul>
-  <li>Magic and Melee Combat System</li>
+  <li>Magic and Melee Combat System
+  <p>I created the weapon attacks and magic attacks using precise IEnumerators and timing logic to give it a fantasical feel</p>
+  </li>
   <p>I created the weapon attacks and magic attacks using precise IEnumerators and timing logic to give it a fantasical feel</p>
