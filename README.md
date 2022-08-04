@@ -1,6 +1,7 @@
 # SummerGameDesign 2022 <br>
 <h1>Hello, this was a class game made during a summer pilot game design course (2022)</h1>
 <h2>UPDATE</h2>
+<hr>
 <h4>Game project file was too large even for GIT LFS, so only the scripts I wrote will be included in the final commit</h4>
 <h2>About the game</h2>
 <hr>
