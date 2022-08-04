@@ -2,10 +2,10 @@
 <h1>Hello, this was a class game made during a summer pilot game design course (2022)</h1>
 <h2>UPDATE</h2>
 <hr>
-<h4>Game project file was too large even for GIT LFS, so only the scripts I wrote will be included in the final commit</h4>
+<h4>Game project file was too large even for GIT LFS, so only the scripts I wrote will be included in the final commit. There is also a windows executable .7z file for windows users to play the game</h4>
 <h2>About the game</h2>
 <hr>
-<p>The game was a class project and the first of its kind at my school. In 3 weeks we had to design a game with the help of our coding teacher, Mr. Rowell, who already provided some core logic pre-implemented into the game such as a singleton and a moveable character. The game quickly increased in scope and complexity, with the final result consisting of 4 levels, each developed by a seperate group in the class. The game takes place in a fantasy world, where the objective is to reach the end of this linear world and defeat the final boss.</p>
+<p>The game was a class project and the first of its kind at my school. In 3 weeks we had to design a game with the help of our coding teacher, Mr. Rowell, who already provided some core logic pre-implemented into the game such as a singleton and a moveable character. The game quickly increased in scope and complexity, with the final result consisting of 4 levels, each developed by a seperate group in the class. The game takes place in a fantasy world, where the objective is to reach the end of this linear world and defeat the final boss. DISCLAIMER!!! The game is by no means a completed game, it has plenty of bugs and unclear gameplay.</p>
 <h2>Here are my contributions towards the game</h2>
 <hr>
 <ul>
