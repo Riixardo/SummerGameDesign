@@ -19,6 +19,6 @@
   <p>All the custom coding logic unique to the sky island and ruined void castle, including the matrix light up puzzle and the artifact event logic.</p>
   </li>
   </li>
-  <li><b>Additional Code</b>
+  <li><b>Core Logic Code</b>
   <p>Core logic code developed for use for all groups, including scripts for mouse pick up and custom object movement.</p>
   </li>
